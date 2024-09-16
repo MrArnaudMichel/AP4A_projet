@@ -9,7 +9,7 @@ Server::Server() {
 }
 
 Server::Server(const Server &server) {
-    outputfile = server.getOutput();
+    outputfile = server.outputfile;
 }
 
 Server::~Server() = default;
@@ -23,7 +23,7 @@ std::ostream &operator<<(Server& server, const std::string& content) {
     return std::cout;
 }
 
-const std::string &Server::getOutput() const {
+const std::string &Server::getOutput() {
     return outputfile;
 }
 

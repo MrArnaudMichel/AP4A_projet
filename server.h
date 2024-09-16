@@ -22,7 +22,7 @@ public:
     friend std::ostream &operator<<(Server& server, const std::string& content);
 
     // Getter and setters
-    const std::string &getOutput() const;
+    const std::string& getOutput();
     void setOutput(const std::string &outputfile);
     void setOutput();
 

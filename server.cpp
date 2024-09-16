@@ -14,18 +14,6 @@ Server::Server(const Server &server) {
 
 Server::~Server() = default;
 
-void Server::consoleWrite(const std::string& string) {
-    std::cout << "Hello world" << std::endl;
-}
-
-void Server::fileWrite(const std::string& content, const std::string& filename) {
-    std::ofstream file("logs/" + filename + ".log");
-    if (file){
-        file << content << std::endl;
-    }
-    file.close();
-}
-
 std::ostream &operator<<(Server& server, const std::string& content) {
     if (server.getOutput() == "0") {
         Server::consoleWrite(content);
@@ -45,4 +33,16 @@ void Server::setOutput(const std::string &outputfile) {
 
 void Server::setOutput() {
     Server::outputfile = "0";
+}
+
+void Server::consoleWrite(const std::string& string) {
+    std::cout << "Hello world" << std::endl;
+}
+
+void Server::fileWrite(const std::string& content, const std::string& filename) {
+    std::ofstream file("logs/" + filename + ".log");
+    if (file){
+        file << content << std::endl;
+    }
+    file.close();
 }

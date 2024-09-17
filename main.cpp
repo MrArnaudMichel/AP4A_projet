@@ -8,6 +8,6 @@ int main(){
     Server server = Server();
     server << "Hello world";
     server.setOutput("default");
-    server << "Hello World1";
+    server << "Hello World on log file";
     return 0;
 }

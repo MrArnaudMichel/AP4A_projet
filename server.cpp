@@ -14,6 +14,8 @@ Server::Server(const Server &server) {
 
 Server::~Server() = default;
 
+Server &Server::operator=(const Server &) = default;
+
 std::ostream &operator<<(Server& server, const std::string& content) {
     if (server.getOutput() == "0") {
         Server::consoleWrite(content);

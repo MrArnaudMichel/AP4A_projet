@@ -16,6 +16,7 @@ public:
     Server();
     Server(const Server& server);
     virtual ~Server();
+    Server& operator=(const Server&);
 
 
     // Overrides

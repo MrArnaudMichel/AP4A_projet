@@ -9,5 +9,7 @@ int main(){
     server << "Hello world";
     server.setOutput("default");
     server << "Hello World on log file";
+    server.setOutput();
+    server << "Hello world";
     return 0;
 }

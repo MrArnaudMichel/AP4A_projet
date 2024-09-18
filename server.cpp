@@ -38,7 +38,7 @@ void Server::setOutput() {
 }
 
 void Server::consoleWrite(const std::string& string) {
-    std::cout << "Hello world" << std::endl;
+    std::cout << string << std::endl;
 }
 
 void Server::fileWrite(const std::string& content, const std::string& filename) {

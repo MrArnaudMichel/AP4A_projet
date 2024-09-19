@@ -29,8 +29,8 @@ const std::string &Server::getOutput() {
     return outputfile;
 }
 
-void Server::setOutput(const std::string &outputfile) {
-    Server::outputfile = outputfile;
+void Server::setOutput(const std::string &_outputfile) {
+    Server::outputfile = _outputfile;
 }
 
 void Server::setOutput() {

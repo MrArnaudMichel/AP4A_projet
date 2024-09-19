@@ -24,7 +24,7 @@ public:
 
     // Getter and setters
     const std::string& getOutput();
-    void setOutput(const std::string &outputfile);
+    void setOutput(const std::string &_outputfile);
     void setOutput();
 
     // Static methods of output

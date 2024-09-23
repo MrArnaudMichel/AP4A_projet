@@ -2,6 +2,7 @@
 // Created by arnaud on 16 Sep 2024.
 //
 
+#include <sstream>
 #include "server.h"
 
 Server::Server() {
@@ -43,8 +44,30 @@ void Server::consoleWrite(const std::string& string) {
 
 void Server::fileWrite(const std::string& content, const std::string& filename) {
     std::ofstream file("logs/" + filename + ".log");
+
     if (file){
-        file << content << std::endl;
+        file << content << ";" << getFormatedDate() << std::endl;
     }
     file.close();
+}
+
+std::string Server::getFormatedDate() {
+    // Get the current time
+    time_t now = time(nullptr);
+    // Convert it to local time
+    tm *ltm = localtime(&now);
+
+    // Create a string stream to format the date and time
+    std::ostringstream oss;
+
+    // Format the date and time
+    oss << ltm->tm_mday << "/"
+        << 1 + ltm->tm_mon << "/"
+        << 1900 + ltm->tm_year << "-"
+        << (ltm->tm_hour) % 24 << ":"
+        << (ltm->tm_min) % 60 << ":"
+        << ltm->tm_sec;
+
+    // Return the formatted string
+    return oss.str();
 }

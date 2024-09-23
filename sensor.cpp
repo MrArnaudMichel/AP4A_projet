@@ -3,3 +3,15 @@
 //
 
 #include "sensor.h"
+
+Sensor::Sensor() {
+
+}
+
+Sensor::Sensor(const Sensor &s) {
+
+}
+
+Sensor::~Sensor() {
+
+}

@@ -8,6 +8,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <ctime>
 
 
 class Server{
@@ -15,7 +16,7 @@ public:
     // Coplien architecture
     Server();
     Server(const Server& server);
-    virtual ~Server();
+    ~Server();
     Server& operator=(const Server&);
 
 
@@ -30,6 +31,8 @@ public:
     // Static methods of output
     static void consoleWrite(const std::string& string);
     static void fileWrite(const std::string& content, const std::string& filename);
+
+    static std::string getFormatedDate();
 
 private:
     //Attributes

@@ -17,6 +17,8 @@ public:
     virtual ~Scheduler();
 
     [[noreturn]] void simulation();
+
+    void addSensor(Sensor *s);
 };
 
 #endif //AP4A_PROJET_SCHEDULER_H

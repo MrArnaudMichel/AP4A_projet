@@ -36,9 +36,8 @@ public:
     void setOutput();
 
     // Static methods of output
-    static void consoleWrite(const string &string);
-
-    static void fileWrite(const string &content, const string &filename);
+    void consoleWrite(const string &string);
+    void fileWrite(const string &content, const string &filename);
 
     static string getFormatedDate();
 

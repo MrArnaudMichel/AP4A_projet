@@ -19,9 +19,9 @@ Server &Server::operator=(const Server &) = default;
 
 ostream &operator<<(Server &server, const string &content) {
     if (server.getOutput().empty()) {
-        Server::consoleWrite(content);
+        server.consoleWrite(content);
     } else {
-        Server::fileWrite(content, server.getOutput());
+        server.fileWrite(content, server.getOutput());
     }
     return cout;
 }

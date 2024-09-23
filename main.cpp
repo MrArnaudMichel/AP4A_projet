@@ -13,5 +13,10 @@ int main() {
     server << "Hello world";
 
     Scheduler sch;
+
+    Sensor *s = new Sensor("0", "float", 2, &server);
+    Sensor *s2 = new Sensor("0", "float", 2, &server);
+    sch.addSensor(s);
+    sch.addSensor(s2);
     sch.simulation();
 }

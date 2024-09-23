@@ -3,7 +3,7 @@
 //
 
 #include <sstream>
-#include "headers/server.h"
+#include "server.h"
 
 Server::Server() {
     outputfile = "";

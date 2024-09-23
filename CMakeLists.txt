@@ -6,14 +6,14 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(.)
 
 add_executable(AP4A_projet
-        sources/main.cpp
-        headers/main.h
-        sources/server.cpp
-        headers/server.h
-        sources/sensor.cpp
-        headers/sensor.h
-        sources/scheduler.cpp
-        headers/scheduler.h
-        sources/data.cpp
-        headers/data.h
+        main.cpp
+        main.h
+        server.cpp
+        server.h
+        sensor.cpp
+        sensor.h
+        scheduler.cpp
+        scheduler.h
+        data.cpp
+        data.h
 )

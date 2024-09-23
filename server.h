@@ -10,6 +10,8 @@
 #include <string>
 #include <ctime>
 
+using namespace std;
+
 
 class Server{
 public:
@@ -21,21 +23,21 @@ public:
 
 
     // Overrides
-    friend std::ostream &operator<<(Server& server, const std::string& content);
+    friend ostream &operator<<(Server& server, const string& content);
 
     // Getter and setters
-    const std::string& getOutput();
-    void setOutput(const std::string &_outputfile);
+    const string& getOutput();
+    void setOutput(const string &_outputfile);
     void setOutput();
 
     // Static methods of output
-    static void consoleWrite(const std::string& string);
-    static void fileWrite(const std::string& content, const std::string& filename);
+    static void consoleWrite(const string& string);
+    static void fileWrite(const string& content, const string& filename);
 
-    static std::string getFormatedDate();
+    static string getFormatedDate();
 
 private:
     //Attributes
-    std::string outputfile;
+    string outputfile;
 };
 #endif //PROJET_SERVER_H

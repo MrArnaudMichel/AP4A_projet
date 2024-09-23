@@ -2,7 +2,7 @@
 // Created by arnaud on 16 Sep 2024.
 //
 
-#include "headers/main.h"
+#include "main.h"
 
 int main(){
     Server server = Server();

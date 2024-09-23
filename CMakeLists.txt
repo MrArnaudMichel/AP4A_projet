@@ -10,4 +10,8 @@ add_executable(AP4A_projet
         main.h
         server.cpp
         server.h
+        sensor.cpp
+        sensor.h
+        scheduler.cpp
+        scheduler.h
 )

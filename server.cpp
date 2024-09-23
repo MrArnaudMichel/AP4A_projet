@@ -5,7 +5,7 @@
 #include "server.h"
 
 Server::Server() {
-    outputfile = "0";
+    outputfile = "";
 }
 
 Server::Server(const Server &server) {
@@ -17,7 +17,7 @@ Server::~Server() = default;
 Server &Server::operator=(const Server &) = default;
 
 std::ostream &operator<<(Server& server, const std::string& content) {
-    if (server.getOutput() == "0") {
+    if (server.getOutput().empty()) {
         Server::consoleWrite(content);
     } else {
         Server::fileWrite(content, server.getOutput());
@@ -34,7 +34,7 @@ void Server::setOutput(const std::string &_outputfile) {
 }
 
 void Server::setOutput() {
-    Server::outputfile = "0";
+    Server::outputfile = "";
 }
 
 void Server::consoleWrite(const std::string& string) {

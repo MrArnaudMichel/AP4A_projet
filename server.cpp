@@ -39,14 +39,14 @@ void Server::setOutput() {
 }
 
 void Server::consoleWrite(const std::string& string) {
-    std::cout << string << std::endl;
+    std::cout << string << " - " << Server::getFormatedDate() << std::endl;
 }
 
 void Server::fileWrite(const std::string& content, const std::string& filename) {
     std::ofstream file("logs/" + filename + ".log");
 
     if (file){
-        file << content << ";" << getFormatedDate() << std::endl;
+        file << content << ";" << Server::getFormatedDate() << std::endl;
     }
     file.close();
 }

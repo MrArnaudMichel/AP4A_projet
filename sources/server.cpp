@@ -3,7 +3,7 @@
 //
 
 #include <sstream>
-#include "server.h"
+#include "headers/server.h"
 
 Server::Server() {
     outputfile = "";
@@ -46,7 +46,7 @@ void Server::fileWrite(const std::string& content, const std::string& filename) 
     std::ofstream file("logs/" + filename + ".log");
 
     if (file){
-        file << content << ";" << Server::getFormatedDate() << std::endl;
+        file << content << "-" << Server::getFormatedDate() << std::endl;
     }
     file.close();
 }

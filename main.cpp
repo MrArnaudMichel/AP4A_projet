@@ -6,16 +6,16 @@
 
 int main() {
     Server server = Server();
-    server << "Hello world";
-    server.setOutput("default");
-    server << "Hello World on log file";
-    server.setOutput();
-    server << "Hello world";
+//    server << "Hello world";
+//    server.setOutput("default");
+//    server << "Hello World on log file";
+//    server.setOutput();
+//    server << "Hello world";
 
     Scheduler sch;
 
     Sensor *s = new Sensor("0", "float", 2, &server);
-    Sensor *s2 = new Sensor("0", "float", 2, &server);
+    Sensor *s2 = new Sensor("0", "float", 3, &server);
     sch.addSensor(s);
     sch.addSensor(s2);
     sch.simulation();

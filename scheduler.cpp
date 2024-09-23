@@ -15,8 +15,6 @@ Scheduler::~Scheduler() {
     while (true) {
         // TODO: Activer les capteur à chaque seconde
         sleep(1);
-        std::cout << "Test" << std::endl;
-
         for (auto *s: sensors) {
             s->update();
         }

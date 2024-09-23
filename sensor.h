@@ -18,6 +18,7 @@ private:
     Server *server;
 
     int duree;
+    int timeRemain;
 
 public:
     Sensor();

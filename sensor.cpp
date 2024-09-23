@@ -11,6 +11,7 @@ Sensor::Sensor() {
     this->defaultType = "float";
     this->data = 0;
     this->server = nullptr;
+    this->timeRemain = duree;
 }
 
 Sensor::Sensor(const Sensor &s) {
@@ -19,6 +20,8 @@ Sensor::Sensor(const Sensor &s) {
     this->defaultType = s.defaultType;
     this->data = s.data;
     this->server = s.server;
+    this->timeRemain = duree;
+
 }
 
 Sensor::~Sensor() {
@@ -27,20 +30,21 @@ Sensor::~Sensor() {
 
 void Sensor::update() {
     // simuler une mesure toute les x secondes
-    if (duree == 0) {
+    if (timeRemain == 0) {
         execute();
-        duree = 2;
+        timeRemain = duree;
         return;
     }
-    duree--;
+    timeRemain--;
 }
 
 void Sensor::execute() {
-    this->data = (int)random() % 10;
+    this->data = rand() % 255;
     if (server){
         std::ostringstream oss;
         oss << *this;  // Use the overloaded '<<' operator to convert to string
         server->consoleWrite(oss.str());
+//        TODO: Il faudra envoye l'objet sur le serveur
         return;
     }
     std::cout << "On envoie sur le serveur" << this << std::endl;
@@ -49,7 +53,9 @@ void Sensor::execute() {
 
 Sensor::Sensor(const string &id, const string &defaultType, int duree, Server *server) : id(id),
                                                                                          defaultType(defaultType),
-                                                                                         duree(duree), server(server) {}
+                                                                                         duree(duree), server(server) {
+    this->timeRemain = duree;
+}
 
 ostream &operator<<(ostream &os, const Sensor &sensor) {
     os << "id: " << sensor.id << " defaultType: " << sensor.defaultType << " data: " << sensor.data;

@@ -8,36 +8,26 @@
 #include <string>
 #include "server.h"
 
-class Sensor{
+class Sensor {
 private:
     static std::string id;
     std::string defaultType;
     float data;
 
-    Server* server;
+    Server *server;
+
+    int duree;
 
 public:
     Sensor();
-    Sensor(const Sensor& s);
+
+    Sensor(const Sensor &s);
 
     virtual ~Sensor();
 
     void update();
+
     void execute();
-
-    static const string &getId();
-    static void setId(const string &id);
-
-    const string &getDefaultType() const;
-    void setDefaultType(const string &defaultType);
-
-    float getData() const;
-    void setData(float data);
-
-    Server& getServer() const;
-    void setServer(Server *server);
-
-
 };
 
 #endif //AP4A_PROJET_SENSOR_H

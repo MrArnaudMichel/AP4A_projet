@@ -5,14 +5,15 @@
 #include "sensor.h"
 
 Sensor::Sensor() {
+    id = "0";
+    data = 0;
+    defaultType = "float";
+    server = nullptr;
+    duree = 2;
 
 }
 
 Sensor::Sensor(const Sensor &s) {
-    Sensor::id = Sensor::getId();
-    this->data = s.getData();
-    this->defaultType = s.getDefaultType();
-    this->server = s.server; // Car le serveur est commun a tout les sensors
 }
 
 Sensor::~Sensor() {
@@ -20,41 +21,15 @@ Sensor::~Sensor() {
 }
 
 void Sensor::update() {
-
+    // simuler une mesure toute les x secondes
+    if (duree == 0) {
+        execute();
+        duree = 2;
+    } else {
+        duree--;
+    }
 }
 
 void Sensor::execute() {
 
-}
-
-const string &Sensor::getId() {
-    return id;
-}
-
-void Sensor::setId(const string &id) {
-    Sensor::id = id;
-}
-
-const string &Sensor::getDefaultType() const {
-    return defaultType;
-}
-
-void Sensor::setDefaultType(const string &defaultType) {
-    Sensor::defaultType = defaultType;
-}
-
-float Sensor::getData() const {
-    return data;
-}
-
-void Sensor::setData(float data) {
-    Sensor::data = data;
-}
-
-Server *Sensor::getServer() const {
-    return server;
-}
-
-void Sensor::setServer(Server *server) {
-    Sensor::server = server;
 }

@@ -5,13 +5,18 @@
 #ifndef AP4A_PROJET_SCHEDULER_H
 #define AP4A_PROJET_SCHEDULER_H
 
-class Scheduler{
+#include <vector>
+#include <sensor.h>
+
+class Scheduler {
+private:
+    std::vector<Sensor *> sensors;
 public:
     Scheduler();
 
     virtual ~Scheduler();
 
-    void simulation();
+    [[noreturn]] void simulation();
 };
 
 #endif //AP4A_PROJET_SCHEDULER_H

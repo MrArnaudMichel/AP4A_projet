@@ -16,4 +16,8 @@ add_executable(AP4A_projet
         scheduler.h
         data.cpp
         data.h
+
+        # Sensors
+        slight.h
+        slight.cpp
 )

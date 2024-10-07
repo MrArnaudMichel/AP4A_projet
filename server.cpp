@@ -5,6 +5,8 @@
 #include <sstream>
 #include "server.h"
 
+#include "sensor.h"
+
 Server::Server() {
     outputfile = "";
 }
@@ -31,22 +33,25 @@ const string &Server::getOutput() {
 }
 
 void Server::setOutput(const string &_outputfile) {
-    Server::outputfile = _outputfile;
+    outputfile = _outputfile;
 }
 
 void Server::setOutput() {
-    Server::outputfile = "";
+    outputfile = "";
 }
 
 void Server::consoleWrite(const string &string) {
-    cout << string << " - " << Server::getFormatedDate() << endl;
+    cout << string  << endl;
 }
 
 void Server::fileWrite(const string &content, const string &filename) {
-    ofstream file("logs/" + filename + ".log");
+    ofstream file("../logs/" + filename + ".csv");
 
     if (file) {
-        file << content << "-" << Server::getFormatedDate() << endl;
+        file << content << "-" << getFormatedDate() << endl;
+    }
+    else {
+        cerr << "Unable to open file " << filename << endl;
     }
     file.close();
 }
@@ -70,4 +75,14 @@ string Server::getFormatedDate() {
 
     // Return the formatted string
     return oss.str();
+}
+
+void Server::getData(Sensor &s) {
+    ostringstream oss;
+    oss << "=======================\n"
+        << "Id: " << s.getId()
+        << "\nValue: " << s.getData()
+        << "\nDate: " << getFormatedDate() << std::endl;
+    consoleWrite(oss.str());
+    fileWrite(oss.str(), "test");
 }

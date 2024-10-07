@@ -8,8 +8,10 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <ctime>
+#include <sys/stat.h>
+#include <sys/types.h>
 
+class Sensor;
 using namespace std;
 
 
@@ -32,14 +34,17 @@ public:
     const string &getOutput();
 
     void setOutput(const string &_outputfile);
-
     void setOutput();
 
     // Static methods of output
     void consoleWrite(const string &string);
+
+    void create_directory();
+
     void fileWrite(const string &content, const string &filename);
 
     static string getFormatedDate();
+    void getData(Sensor &s);
 
 private:
     //Attributes

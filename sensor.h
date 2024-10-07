@@ -9,29 +9,35 @@
 #include <ostream>
 #include "server.h"
 
-class Sensor {
-private:
-    std::string id;
-    std::string defaultType;
-    float data;
+#include "data.h"
+
+using namespace std;
+
+template <class T>class Sensor {
+    string id;
+    Data<T> *data;
 
     Server *server;
 
-    int duree;
     int timeRemain;
+
+public:
+    int duree;
+
 
 public:
     Sensor();
     Sensor(const Sensor &s);
-
-    Sensor(const string &id, const string &defaultType, int duree, Server *server);
-
+    Sensor(string id, int duree, Server *server);
     virtual ~Sensor();
 
-    void update();
-    void execute();
+    virtual void update();
+    virtual void execute();
 
     friend ostream &operator<<(ostream &os, const Sensor &sensor);
+
+    string getId();
+    float getData() const;
 };
 
 #endif //AP4A_PROJET_SENSOR_H

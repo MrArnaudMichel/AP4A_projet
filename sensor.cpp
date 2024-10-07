@@ -3,12 +3,12 @@
 //
 
 #include <sstream>
+#include <utility>
 #include "sensor.h"
 
 Sensor::Sensor() {
     this->id = "0";
     this->duree = 2;
-    this->defaultType = "float";
     this->data = 0;
     this->server = nullptr;
     this->timeRemain = duree;
@@ -17,7 +17,6 @@ Sensor::Sensor() {
 Sensor::Sensor(const Sensor &s) {
     this->id = s.id;
     this->duree = s.duree;
-    this->defaultType = s.defaultType;
     this->data = s.data;
     this->server = s.server;
     this->timeRemain = duree;
@@ -43,7 +42,8 @@ void Sensor::execute() {
     if (server){
         std::ostringstream oss;
         oss << *this;  // Use the overloaded '<<' operator to convert to string
-        server->consoleWrite(oss.str());
+        // server->consoleWrite(oss.str());
+        server->getData(*this);
 //        TODO: Il faudra envoye l'objet sur le serveur
         return;
     }
@@ -51,13 +51,21 @@ void Sensor::execute() {
 
 }
 
-Sensor::Sensor(const string &id, const string &defaultType, int duree, Server *server) : id(id),
-                                                                                         defaultType(defaultType),
-                                                                                         duree(duree), server(server) {
+string Sensor::getId() {
+    return id;
+}
+
+float Sensor::getData() const {
+    return data;
+}
+
+
+Sensor::Sensor(string id, int duree, Server *server) : id(std::move(id)),
+                                                                           server(server), duree(duree) {
     this->timeRemain = duree;
 }
 
 ostream &operator<<(ostream &os, const Sensor &sensor) {
-    os << "id: " << sensor.id << " defaultType: " << sensor.defaultType << " data: " << sensor.data;
+    os << "id: " << sensor.id << " data: " << sensor.data;
     return os;
 }

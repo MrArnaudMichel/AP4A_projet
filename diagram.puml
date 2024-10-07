@@ -1,0 +1,36 @@
+@startuml
+
+class Sensor{
+    - id: int
+    + update()
+    + execute()
+}
+
+Sensor o--> Server
+Sensor *--> Data: gère
+
+class Scheduler{
+    + addSensor(sensor: Sensor)
+    + simulation()
+}
+
+Scheduler "1...1" --> "1...n" Sensor
+
+
+class Server{
+    + getData(sensor: Sensor)
+}
+
+class Data{
+
+}
+
+class Slight{}
+class Stemperature{}
+class Ssound{}
+
+Slight --|> Sensor
+Stemperature --|> Sensor
+Ssound --|> Sensor
+
+@enduml

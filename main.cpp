@@ -14,8 +14,8 @@ int main() {
 
     Scheduler sch;
 
-    Sensor *s = new Sensor("0", "float", 2, &server);
-    Sensor *s2 = new Sensor("0", "float", 3, &server);
+    Sensor *s = new Sensor("0", 2, &server);
+    Sensor *s2 = new Sensor("1", 3, &server);
     sch.addSensor(s);
     sch.addSensor(s2);
     sch.simulation();

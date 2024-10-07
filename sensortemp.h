@@ -13,7 +13,7 @@
 
 using namespace std;
 
-template <class T>class Sensor {
+template <class T>class SensorTemp {
     string id;
     Data<T> *data;
 

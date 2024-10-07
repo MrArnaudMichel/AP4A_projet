@@ -2,15 +2,17 @@
 // Created by arnaud on 07/10/24.
 //
 
-#ifndef SLIGHT_H
-#define SLIGHT_H
+#include "slight.h"
 
+Slight::~Slight() {
+    delete data;
+    delete server_;
+}
 
+inline void Slight::update() {
+    Sensor<bool>::update();
+}
 
-class Slight {
-
-};
-
-
-
-#endif //SLIGHT_H
+void Slight::execute() {
+    this->data->set_value(rand() % 2);
+}

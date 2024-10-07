@@ -27,6 +27,10 @@ public:
                << obj.value
                << ";" << obj.name;
     }
+
+    void set_value(const T &value) {
+        this->value = value;
+    }
 };
 
 #endif //AP4A_PROJET_DATA_H

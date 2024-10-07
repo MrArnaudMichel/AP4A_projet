@@ -5,18 +5,13 @@
 #ifndef SLIGHT_H
 #define SLIGHT_H
 
-#include "sensor.h"
-
-class Slight : public Sensor {
-
+#include "Sensor.h"
+class Slight : public Sensor<bool> {
 public:
-    Slight();
-    ~Slight();
-    float read();
-private:
-
+    ~Slight() override;
+    void update() override;
+    void execute() override;
 };
-
 
 
 #endif //SLIGHT_H

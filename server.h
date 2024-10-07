@@ -11,7 +11,9 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-class Sensor;
+#include "Sensor.h"
+
+class SensorType;
 using namespace std;
 
 

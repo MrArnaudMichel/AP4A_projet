@@ -6,7 +6,7 @@
 #define AP4A_PROJET_SCHEDULER_H
 
 #include <vector>
-#include <sensor.h>
+#include <sensortemp.h>
 
 class Scheduler {
 private:

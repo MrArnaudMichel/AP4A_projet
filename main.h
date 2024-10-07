@@ -7,7 +7,7 @@
 
 
 #include "server.h"
-#include "sensor.h"
+#include "sensortemp.h"
 #include "scheduler.h"
 
 int main();

@@ -4,7 +4,7 @@
 
 #include <sstream>
 #include <utility>
-#include "sensor.h"
+#include "sensortemp.h"
 
 Sensor::Sensor() {
     this->id = "0";

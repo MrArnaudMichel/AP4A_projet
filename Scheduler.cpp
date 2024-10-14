@@ -38,7 +38,7 @@ void Scheduler::addSensor(Sensor *sensor) {
     sensors.push_back(sensor);
 }
 
-void signalHandler(int signum) {
+void signalHandler(const int signum) {
     std::cout << "\n Interrupt signal (" << signum << ") received.\n";
     Scheduler::running = false;
     exit(signum);

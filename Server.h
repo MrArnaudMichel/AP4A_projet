@@ -14,6 +14,11 @@ public:
     static void notify(const Sensor & sensor);
 
     static std::string getDateFormatted();
+
+    static void log(const Sensor & sensor, const std::string & message);
+    static void logOnFile(const Sensor & sensor, const std::string & message);
+
+    static bool isFileEmpty();
 };
 
 

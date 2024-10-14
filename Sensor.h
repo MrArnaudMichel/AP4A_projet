@@ -40,8 +40,7 @@ protected:
 
 public:
     friend std::ostream & operator<<(std::ostream &os, const Sensor &obj) {
-        return os
-        << obj.id << ";" << obj.value;
+        return os << obj.id << ";" << obj.value;
     }
 };
 

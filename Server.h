@@ -11,7 +11,7 @@
 class Sensor;
 class Server {
 public:
-    void notify(const Sensor & sensor);
+    static void notify(const Sensor & sensor);
 
     static std::string getDateFormatted();
 };

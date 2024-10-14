@@ -1,28 +1,32 @@
 //
-// Created by arnaud on 07/10/24.
+// Created by arnaud on 14/10/24.
 //
 
 #include "Sensor.h"
 
-template<class T>
-void Sensor<T>::update() {
-    // simuler une mesure toute les x secondes
-    if (timeRemaining == 0) {
-        execute();
-        timeRemaining = timeToUpdate;
-        return;
+int Sensor::CONST_ID = 0;
+
+Sensor & Sensor::operator=(const Sensor &sensor) {
+    if (this == &sensor) {
+        return *this;
     }
-    timeRemaining--;
+    duration = sensor.duration;
+    timeRemaining = sensor.timeRemaining;
+    server = sensor.server;
+
+    return *this;
 }
 
-template<class T>
-void Sensor<T>::sendData() {
-    if (server_){
-        std::ostringstream oss;
-        oss << *this;
-        // server->consoleWrite(oss.str());
-        server_->getData(*this);
-    }else {
-        std::cerr << "Server is NULL" << std::endl;
+void Sensor::update() {
+    if (timeRemaining > 0) {
+        timeRemaining--;
+        return;
     }
+    execute();
+    timeRemaining = duration;
+}
+
+void Sensor::execute() {
+    setValue(rand() % 100);
+    server->notify(*this);
 }

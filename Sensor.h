@@ -1,55 +1,49 @@
 //
-// Created by arnaud on 07/10/24.
+// Created by arnaud on 14/10/24.
 //
 
 #ifndef SENSOR_H
 #define SENSOR_H
-#include "data.h"
-#include "server.h"
 
+#include <ostream>
 
-template <class T> class Sensor {
-    int timeRemaining;
-protected:
+#include "Server.h"
+class Server;
+class Sensor final {
+private:
+    static int CONST_ID;
     int id;
-    Data<T>*data;
-    Server* server_;
+    Server *server;
 
-    int timeToUpdate;
+    float value;
+
+    int duration;
+    int timeRemaining;
 public:
-    /**
-     * Forme Canonique de Coplien
-     */
-    Sensor(): id(0), data(), server_(), timeToUpdate(0), timeRemaining(0){};
-    Sensor(const Sensor &other)
-        : id(other.id),
-          data(other.data),
-          server_(other.server_),
-          timeToUpdate(other.timeToUpdate),
-          timeRemaining(other.timeRemaining) {
-    }
-    Sensor & operator=(const Sensor &other) {
-        if (this == &other)
-            return *this;
-        id = other.id;
-        data = other.data;
-        server_ = other.server_;
-        timeToUpdate = other.timeToUpdate;
-        timeRemaining = other.timeRemaining;
-        return *this;
+    Sensor() : id(CONST_ID++), server(nullptr), value(0), duration(0), timeRemaining(0) {}
+    Sensor(const Sensor &sensor) : id(CONST_ID++), server(sensor.server), value(0), duration(sensor.duration), timeRemaining(sensor.timeRemaining) {}
+    ~Sensor() = default;
+    Sensor &operator=(const Sensor &sensor);
+
+    Sensor(Server *server, int duration) : id(CONST_ID++), server(server), value(0), duration(duration), timeRemaining(duration) {}
+    void update();
+    void execute();
+
+protected:
+    float getValue() const {
+        return value;
     }
 
-    virtual ~Sensor() {
-        delete data;
-        delete server_;
+    void setValue(float value) {
+        this->value = value;
     }
 
-    virtual void update();
-    virtual void execute();
-    void sendData();
-
-    void test(){};
+public:
+    friend std::ostream & operator<<(std::ostream &os, const Sensor &obj) {
+        return os << obj.id << ";" << obj.value;
+    }
 };
+
 
 
 #endif //SENSOR_H

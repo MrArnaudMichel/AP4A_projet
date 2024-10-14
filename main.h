@@ -5,10 +5,9 @@
 #ifndef PROJET_MAIN_H
 #define PROJET_MAIN_H
 
-
-#include "server.h"
-#include "sensortemp.h"
-#include "scheduler.h"
+#include <iostream>
+#include "Sensor.h"
+#include "Scheduler.h"
 
 int main();
 

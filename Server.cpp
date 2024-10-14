@@ -36,7 +36,6 @@ void Server::logOnFile(const Sensor &sensor, const std::string &message) {
     if (file.is_open()) {
         if (isFileEmpty()) {
             file << "Date;Hour;SensorId;SensorValue;Message" << std::endl;
-            // print pwd in green
             std::cout << "\033[1;32m" << "log.csv created at " << __FILE__ << "\033[0m" << std::endl;
         }
         file << getDateFormatted() << ";" << sensor << ";" << message << std::endl;

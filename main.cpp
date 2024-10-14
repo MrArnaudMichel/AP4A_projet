@@ -7,7 +7,9 @@
 int main() {
     Server server;
     Sensor sensor(&server, 2);
-    sensor.update();
-    sensor.update();
-    sensor.update();
+
+    Scheduler scheduler;
+    scheduler.addSensor(&sensor);
+
+    scheduler.simulation();
 }

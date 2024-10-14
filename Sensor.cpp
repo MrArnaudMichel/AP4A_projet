@@ -4,7 +4,7 @@
 
 #include "Sensor.h"
 
-int Sensor::ID = 0;
+int Sensor::CONST_ID = 0;
 
 Sensor & Sensor::operator=(const Sensor &sensor) {
     if (this == &sensor) {

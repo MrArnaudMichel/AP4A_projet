@@ -7,5 +7,5 @@
 int main() {
     Server server;
     Sensor sensor(&server, 10);
-    std::cout << sensor << std::endl
+    std::cout << sensor << std::endl;
 }

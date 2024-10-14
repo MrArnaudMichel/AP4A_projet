@@ -8,18 +8,8 @@ include_directories(.)
 add_executable(AP4A_projet
         main.cpp
         main.h
-        server.cpp
-        server.h
-        sensortemp.cpp
-        sensortemp.h
-        scheduler.cpp
-        scheduler.h
-        data.cpp
-        data.h
-
-        # Sensors
-        slight.h
-        slight.cpp
         Sensor.cpp
         Sensor.h
+        Server.cpp
+        Server.h
 )

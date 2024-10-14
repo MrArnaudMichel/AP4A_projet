@@ -1,55 +1,27 @@
 //
-// Created by arnaud on 07/10/24.
+// Created by arnaud on 14/10/24.
 //
 
 #ifndef SENSOR_H
 #define SENSOR_H
-#include "data.h"
-#include "server.h"
 
+#include "Server.h"
 
-template <class T> class Sensor {
+class Sensor {
+private:
+    static int id;
+    Server *server;
+
+    int duration;
     int timeRemaining;
-protected:
-    int id;
-    Data<T>*data;
-    Server* server_;
-
-    int timeToUpdate;
 public:
-    /**
-     * Forme Canonique de Coplien
-     */
-    Sensor(): id(0), data(), server_(), timeToUpdate(0), timeRemaining(0){};
-    Sensor(const Sensor &other)
-        : id(other.id),
-          data(other.data),
-          server_(other.server_),
-          timeToUpdate(other.timeToUpdate),
-          timeRemaining(other.timeRemaining) {
-    }
-    Sensor & operator=(const Sensor &other) {
-        if (this == &other)
-            return *this;
-        id = other.id;
-        data = other.data;
-        server_ = other.server_;
-        timeToUpdate = other.timeToUpdate;
-        timeRemaining = other.timeRemaining;
-        return *this;
-    }
+    Sensor();
+    Sensor(const Sensor &sensor);
+    virtual ~Sensor() = default;
+    Sensor &operator=(const Sensor &sensor);
 
-    virtual ~Sensor() {
-        delete data;
-        delete server_;
-    }
-
-    virtual void update();
-    virtual void execute();
-    void sendData();
-
-    void test(){};
 };
+
 
 
 #endif //SENSOR_H

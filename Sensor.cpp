@@ -16,3 +16,17 @@ Sensor & Sensor::operator=(const Sensor &sensor) {
 
     return *this;
 }
+
+void Sensor::update() {
+    if (timeRemaining > 0) {
+        timeRemaining--;
+        return;
+    }
+    execute();
+    timeRemaining = duration;
+}
+
+void Sensor::execute() {
+    setValue(rand() % 100);
+    server->notify(*this);
+}

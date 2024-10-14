@@ -3,3 +3,7 @@
 //
 
 #include "Server.h"
+
+void Server::notify(const Sensor &sensor) {
+    std::cout << sensor << std::endl;
+}

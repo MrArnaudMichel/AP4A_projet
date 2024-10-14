@@ -7,7 +7,7 @@
 int main() {
     Server server;
     Sensor sensor(&server, 2);
-    std::cout << sensor << std::endl;
-
-    std::cout << Server::getDateFormatted() << std::endl;
+    sensor.update();
+    sensor.update();
+    sensor.update();
 }

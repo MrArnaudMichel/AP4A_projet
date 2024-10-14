@@ -9,7 +9,7 @@
 
 #include "Server.h"
 class Server;
-class Sensor {
+class Sensor final {
 private:
     static int CONST_ID;
     int id;
@@ -21,7 +21,8 @@ private:
     int timeRemaining;
 public:
     Sensor() : id(CONST_ID++), server(nullptr), value(0), duration(0), timeRemaining(0) {}
-    Sensor(const Sensor &sensor) : id(CONST_ID++), server(sensor.server), value(0), duration(sensor.duration), timeRemaining(sensor.timeRemaining) {}    virtual ~Sensor() = default;
+    Sensor(const Sensor &sensor) : id(CONST_ID++), server(sensor.server), value(0), duration(sensor.duration), timeRemaining(sensor.timeRemaining) {}
+    ~Sensor() = default;
     Sensor &operator=(const Sensor &sensor);
 
     Sensor(Server *server, int duration) : id(CONST_ID++), server(server), value(0), duration(duration), timeRemaining(duration) {}

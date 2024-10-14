@@ -4,23 +4,11 @@
 
 #include "Sensor.h"
 
-Sensor::Sensor() {
-    id++;
-    duration = 0;
-    timeRemaining = duration;
-    server = nullptr;
-}
-
-Sensor::Sensor(const Sensor &sensor) {
-    id = sensor.id + 1;
-    duration = sensor.duration;
-    timeRemaining = sensor.timeRemaining;
-    server = sensor.server;
-}
+int Sensor::ID = 0;
 
 Sensor & Sensor::operator=(const Sensor &sensor) {
-    if (this != &sensor) {
-        id = sensor.id + 1;
+    if (this == &sensor) {
+        return *this;
     }
     duration = sensor.duration;
     timeRemaining = sensor.timeRemaining;

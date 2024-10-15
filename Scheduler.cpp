@@ -39,14 +39,14 @@ void Scheduler::addSensor(Sensor *sensor) {
 }
 
 void signalHandler(const int signum) {
-    std::cout << "\n Interrupt signal (" << signum << ") received.\n";
+    std::cout << "\nInterrupt signal (" << signum << ") received.\n";
     Scheduler::running = false;
     exit(signum);
 }
 
 void Scheduler::simulation() {
-    signal(SIGINT, signalHandler);
-    signal(SIGTERM, signalHandler);
+    signal(SIGINT, signalHandler); // Ctrl+C
+    signal(SIGTERM, signalHandler); // kill
     while (running) {
         sleep(1);
         for (auto &sensor : sensors) {

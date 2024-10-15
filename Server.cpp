@@ -13,7 +13,7 @@ void Server::notify(const Sensor &sensor) {
 
 std::string Server::getDateFormatted()  {
     time_t rawtime;
-    struct tm * timeinfo;
+    tm * timeinfo;
     char buffer[80];
 
     time (&rawtime);
@@ -26,7 +26,7 @@ std::string Server::getDateFormatted()  {
 }
 
 void Server::log(const Sensor &sensor, const std::string &message) {
-    std::cout << "\033[1;35m" << getDateFormatted() << " - " << "\033[1;33m" << sensor << " - " << "\033[1;36m" <<
+    std::cout << "\033[1;35mDate: " << getDateFormatted() << " - " << "\033[1;33mSensor(id;value): " << sensor << " - " << "\033[1;36mMessage: " <<
         message << std::endl;
 }
 

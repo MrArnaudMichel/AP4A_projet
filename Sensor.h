@@ -12,9 +12,11 @@ class Server;
 class Sensor final {
 private:
     static int CONST_ID;
+
+
     int id;
     Server *server;
-
+    std::string valueType;
     float value;
 
     int duration;
@@ -25,7 +27,7 @@ public:
     ~Sensor() = default;
     Sensor &operator=(const Sensor &sensor);
 
-    Sensor(Server *server, int duration) : id(CONST_ID++), server(server), value(0), duration(duration), timeRemaining(duration) {}
+    Sensor(Server *server, const std::string &valueType, int duration) : id(CONST_ID++), server(server), valueType(valueType), value(0), duration(duration), timeRemaining(duration) {}
     void update();
     void execute();
 

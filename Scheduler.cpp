@@ -9,9 +9,10 @@
 bool Scheduler::running = true;
 
 Scheduler::Scheduler(const Scheduler &scheduler) {
-    for (auto &sensor : scheduler.sensors) {
-        sensors.push_back(new Sensor(*sensor));
-    }
+    // TODO
+    // for (auto &sensor : scheduler.sensors) {
+    //     sensors.push_back(new Sensor(*sensor));
+    // }
 }
 
 Scheduler::~Scheduler() {
@@ -21,16 +22,17 @@ Scheduler::~Scheduler() {
 }
 
 Scheduler & Scheduler::operator=(const Scheduler &scheduler) {
-    if (this == &scheduler) {
-        return *this;
-    }
-    for (auto &sensor : sensors) {
-        delete sensor;
-    }
-    sensors.clear();
-    for (auto &sensor : scheduler.sensors) {
-        sensors.push_back(new Sensor(*sensor));
-    }
+    // TODO: implement this
+    // if (this == &scheduler) {
+    //     return *this;
+    // }
+    // for (auto &sensor : sensors) {
+    //     delete sensor;
+    // }
+    // sensors.clear();
+    // for (auto &sensor : scheduler.sensors) {
+    //     sensors.push_back(new Sensor(*sensor));
+    // }
     return *this;
 }
 

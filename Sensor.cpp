@@ -25,8 +25,3 @@ void Sensor::update() {
     execute();
     timeRemaining = duration;
 }
-
-void Sensor::execute() {
-    // setValue(std::rand() % 100);
-    // Server::notify(*this);
-}

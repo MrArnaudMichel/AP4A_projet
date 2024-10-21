@@ -4,16 +4,14 @@
 
 #include "main.h"
 
+#include "SensorLight.h"
+
 int main() {
     Server server;
-    Sensor sensor(&server, 1);
-    Sensor sensor2(&server, 2);
-    Sensor sensor3(&server, 3);
+    SensorLight sensor_light(&server, 2);
 
     Scheduler scheduler;
-    scheduler.addSensor(&sensor);
-    scheduler.addSensor(&sensor2);
-    scheduler.addSensor(&sensor3);
+    scheduler.addSensor(&sensor_light);
 
     scheduler.simulation();
 }

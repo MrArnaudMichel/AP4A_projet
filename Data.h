@@ -4,6 +4,8 @@
 
 #ifndef DATA_H
 #define DATA_H
+#include <iostream>
+#include <ostream>
 
 
 template <class T>
@@ -21,6 +23,14 @@ public:
     }
     void setValue(const T &value) {
         this->value = value;
+    }
+
+    std::ostream & toString() const {
+        return std::cout << "Data: " << value << std::endl;
+    }
+
+    friend std::ostream & operator<<(std::ostream &os, const Data &obj) {
+        return os << "value: " << obj.value;
     }
 };
 

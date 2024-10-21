@@ -5,6 +5,6 @@
 #include "SensorFloat.h"
 
 void SensorFloat::execute() {
-    setValue((float)(rand() % 100) - 50);
-    Server::notify(*this, "environment");
+    setValue(((float)(rand() % 100) - 50) / 5);
+    Server::notify(*this, "environment", "Nouvelle valeur d'environement");
 }

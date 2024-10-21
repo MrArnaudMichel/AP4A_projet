@@ -8,5 +8,5 @@
 
 void SensorInteger::execute() {
     setValue(rand()%100);
-    Server::notify(*this, "sound");
+    Server::notify(*this, "sound", "Mise a jour du son");
 }

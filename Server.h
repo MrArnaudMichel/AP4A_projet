@@ -6,12 +6,11 @@
 #define SERVER_H
 #include "Sensors/Sensor.h"
 #include <iostream>
-#include <ctime>
 
 class Sensor;
 class Server {
 public:
-    static void notify(const Sensor & sensor, const std::string & filepath);
+    static void notify(const Sensor &sensor, const std::string &filepath, const std::string &message);
 
     static std::string getDateFormatted();
 

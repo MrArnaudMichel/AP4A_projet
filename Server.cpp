@@ -6,9 +6,9 @@
 
 #include <fstream>
 
-void Server::notify(const Sensor &sensor, const std::string & filepath) {
-    logOnFile(sensor, filepath, "Sensor value updated");
-    log(sensor, "Sensor value updated");
+void Server::notify(const Sensor &sensor, const std::string & filepath, const std::string &message) {
+    logOnFile(sensor, filepath, message);
+    log(sensor, message);
 }
 
 std::string Server::getDateFormatted()  {
@@ -27,9 +27,7 @@ std::string Server::getDateFormatted()  {
 
 void Server::log(const Sensor &sensor, const std::string &message) {
     std::cout << "\033[1;35mDate: " << getDateFormatted() << " - "
-    << "\033[1;33mSensor(id;type;value): ";
-    std::cout << sensor << " - ";
-    std::cout << " \033[1;36mMessage: " << message << std::endl;
+    << "\033[1;33mSensor(id;type;value): "  << sensor << " - " << " \033[1;36mMessage: " << message << std::endl;
 }
 
 

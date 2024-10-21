@@ -6,5 +6,5 @@
 
 void SensorBool::execute() {
     setValue(rand()%2);
-    Server::notify(*this, "light");
+    Server::notify(*this, "light", "Récupération de la lumière");
 }

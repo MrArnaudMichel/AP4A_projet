@@ -2,7 +2,8 @@
 
 ## Overview
 
-This project is a C++ application that involves a `Server` class responsible for logging sensor data. The `Server` class provides functionalities to notify, log, and log data to a file.
+This project is a C++ application that involves a `Server` class responsible for logging sensor data. The `Server` class
+provides functionalities to notify, log, and log data to a file.
 
 ## Files
 
@@ -15,11 +16,11 @@ This project is a C++ application that involves a `Server` class responsible for
 ### Server
 
 - **Methods:**
-  - `static void notify(const Sensor & sensor)`: Notifies the server about a sensor update.
-  - `static std::string getDateFormatted()`: Returns the current date and time formatted as a string.
-  - `static void log(const Sensor & sensor, const std::string & message)`: Logs a message to the console.
-  - `static void logOnFile(const Sensor & sensor, const std::string & message)`: Logs a message to the `log.csv` file.
-  - `static bool isFileEmpty()`: Checks if the `log.csv` file is empty.
+    - `static void notify(const Sensor & sensor)`: Notifies the server about a sensor update.
+    - `static std::string getDateFormatted()`: Returns the current date and time formatted as a string.
+    - `static void log(const Sensor & sensor, const std::string & message)`: Logs a message to the console.
+    - `static void logOnFile(const Sensor & sensor, const std::string & message)`: Logs a message to the `log.csv` file.
+    - `static bool isFileEmpty()`: Checks if the `log.csv` file is empty.
 
 ## Usage
 

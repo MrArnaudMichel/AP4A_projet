@@ -18,9 +18,9 @@ public:
         : Sensor(server, duration, std::move(type)), Data() {}
 
     void execute() override;
-
     void display(std::ostream &os) const override;
 
+    // Operator overloading
     friend std::ostream & operator<<(std::ostream &os, const SensorBool &obj);
 };
 

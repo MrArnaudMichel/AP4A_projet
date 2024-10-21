@@ -32,11 +32,12 @@ public:
     Sensor &operator=(const Sensor &sensor);
 
     Sensor(Server *server, const int duration, std::string type_) : id(CONST_ID++), duration(duration), time_remaining(duration), server(server), type(std::move(type_)) {}
+
     void update();
     virtual void execute() = 0;
-
     virtual void display(std::ostream& os) const;
 
+    // Operator overloading
     friend std::ostream & operator<<(std::ostream &os, const Sensor &obj);
 };
 

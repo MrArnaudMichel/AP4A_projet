@@ -33,9 +33,7 @@ public:
     void update();
     virtual void execute() = 0;
 
-    virtual std::ostream & toString() const {
-        return std::cout << "Sensor: " << id << " " << type << " " << duration << " " << timeRemaining << std::endl;
-    }
+    virtual std::ostream & toString() const = 0;
 
     friend std::ostream & operator<<(std::ostream &os, const Sensor &obj) {
         return os << obj.id << ";";

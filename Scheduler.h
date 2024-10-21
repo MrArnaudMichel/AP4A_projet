@@ -8,7 +8,6 @@
 #include <vector>
 #include "Sensors/Sensor.h"
 #include <csignal>
-#include <unistd.h>
 
 
 class Scheduler {
@@ -17,9 +16,12 @@ private:
 public:
     static bool running;
 
+    //////////////////////////////
+    /// Coplien architecture /////
+    //////////////////////////////
     Scheduler() = default;
     Scheduler(const Scheduler &scheduler);
-    ~Scheduler();
+    virtual ~Scheduler();
     Scheduler &operator=(const Scheduler &scheduler);
 
     void addSensor(Sensor *sensor);

@@ -4,6 +4,9 @@
 
 #include "SensorFloat.h"
 
+/**
+ * Execute the sensor (override) and notify the server
+ */
 void SensorFloat::execute() {
     std::random_device rd;
     std::mt19937 re(rd());
@@ -12,11 +15,21 @@ void SensorFloat::execute() {
     server->notify(*this, "environment", "Nouvelle valeur d'environement");
 }
 
+/**
+ * display the sensor (override)
+ * @param os output stream
+ */
 void SensorFloat::display(std::ostream &os) const {
     Sensor::display(os);
     os << *this;
 }
 
+/**
+ * Display the sensor with the << operator
+ * @param os output stream
+ * @param obj sensor to display
+ * @return the output stream
+ */
 std::ostream & operator<<(std::ostream &os, const SensorFloat &obj) {
     return os << static_cast<const Data<float> &>(obj);
 }

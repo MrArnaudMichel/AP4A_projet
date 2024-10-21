@@ -5,7 +5,6 @@
 #ifndef DATA_H
 #define DATA_H
 #include <iostream>
-#include <ostream>
 
 
 template <class T>
@@ -13,6 +12,9 @@ class Data {
 private:
     T value;
 public:
+    //////////////////////////////
+    /// Coplien architecture /////
+    //////////////////////////////
     Data() = default;
     explicit Data(const T &value) : value(value) {}
     ~Data() = default;

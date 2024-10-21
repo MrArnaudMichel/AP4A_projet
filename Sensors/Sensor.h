@@ -23,9 +23,11 @@ protected:
     Server *server;
     std::string type;
 public:
+    //////////////////////////////
+    /// Coplien architecture /////
+    //////////////////////////////
     Sensor() : id(CONST_ID++), server(nullptr), duration(0), time_remaining(0) {}
     Sensor(const Sensor &sensor) : id(CONST_ID++), server(sensor.server), duration(sensor.duration), time_remaining(sensor.time_remaining) {}
-
     virtual ~Sensor() = default;
     Sensor &operator=(const Sensor &sensor);
 

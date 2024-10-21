@@ -5,7 +5,6 @@
 #ifndef SENSOR_H
 #define SENSOR_H
 
-#include <ostream>
 #include <iostream>
 #include <utility>
 

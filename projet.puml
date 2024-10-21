@@ -1,43 +1,67 @@
 @startuml
+
+
 package AP4A_project{
     class Server{
-        void notify()
-        string getDateFormatted()
-        void log()
-        void logInFile()
-        bool isFileEmpty()
+        + <<create>> Server()
+        + <<create>> Server(Server& server)
+        + <<destroy>> ~Server()
+        + Server& operator=(Server& server)
+
+        + void notify(Sensor& sensor, string& filepath, string& message)
+        + {static} string getDateFormatted()
+        + void log(string& message)
+        + void logInFile(string& filepath, string& message)
+        + bool isFileEmpty(string& filepath)
     }
 
     class Scheduler{
-        {static} bool running
-        addSensor()
-        void simulation()
+        + <<create>> Scheduler()
+        + <<create>> Scheduler(Scheduler& scheduler)
+        + <<destroy>> ~Scheduler()
+        + Scheduler& operator=(Scheduler& scheduler)
+
+        - {static} bool running
+        + addSensor(Sensor& sensor)
+        + void simulation()
     }
 
     package Sensors{
-        class Sensor{
-            {static} int CONST_ID
-            int id
-            string type
-            int duration
-            int time_remaining
+        abstract class Sensor{
+            - {static} int CONST_ID
+            - int id
+            - string type
+            - int duration
+            - int time_remaining
 
-            void update()
-            {abstract} void execute()
+            + <<create>> Sensor()
+            + <<create>> Sensor(int id, string type, int duration)
+            + <<create>> Sensor(Sensor& sensor)
+            + <<destroy>> ~Sensor()
+            + Sensor& operator=(Sensor& sensor)
+
+            + void update()
+            + {abstract} void display(ostream& os)
+            + {abstract} void execute()
+
+            + <<friend>> ostream& operator<<(ostream& os, Sensor& sensor)
         }
 
-        Sensor "1..1" o--> "1..1" Server: notify
+        Server "1..1" <-- "1..1" Sensor: notify
 
         class SensorBool{
-            void execute()
+            + <<override>> void execute()
+            + <<friend>> ostream& operator<<(ostream& os, SensorBool& sensor)
         }
 
         class SensorFloat{
-            void execute()
+            + <<override>> void execute()
+            + <<friend>> ostream& operator<<(ostream& os, SensorFloat& sensor)
         }
 
         class SensorInteger{
-            void execute()
+            + <<override>> void execute()
+            + <<friend>> ostream& operator<<(ostream& os, SensorInteger& sensor)
         }
 
         Sensor <|-- SensorBool
@@ -48,13 +72,13 @@ package AP4A_project{
     }
 
     class Data<template T>{
-        T value
-        T getValue()
-        void setValue()
+        - T value
+        # T getValue()
+        # void setValue(T value)
     }
 
-    SensorBool --|> Data: Data<bool>
-    SensorFloat --|> Data: Data<float>
-    SensorInteger --|> Data: Data<int>
+    SensorBool ---|> Data: Data<bool>
+    SensorFloat ---|> Data: Data<float>
+    SensorInteger ---|> Data: Data<int>
 }
 @enduml

@@ -11,6 +11,13 @@ template <class T>
 class Data {
 private:
     T value;
+protected:
+    T getValue() const {
+        return value;
+    }
+    void setValue(const T &value) {
+        this->value = value;
+    }
 public:
     //////////////////////////////
     /// Coplien architecture /////
@@ -20,12 +27,7 @@ public:
     ~Data() = default;
     Data &operator=(const Data &data) = default;
 
-    T getValue() const {
-        return value;
-    }
-    void setValue(const T &value) {
-        this->value = value;
-    }
+
 
     friend std::ostream & operator<<(std::ostream &os, const Data &obj) {
         return os << obj.value;

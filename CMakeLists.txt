@@ -14,4 +14,5 @@ add_executable(AP4A_projet
         Server.h
         Scheduler.cpp
         Scheduler.h
+        Data.h
 )

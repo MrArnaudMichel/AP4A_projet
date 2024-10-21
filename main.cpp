@@ -6,9 +6,9 @@
 
 int main() {
     Server server;
-    Sensor sensor(&server, "float", 1);
-    Sensor sensor2(&server, "int", 2);
-    Sensor sensor3(&server, "int", 3);
+    Sensor sensor(&server, 1);
+    Sensor sensor2(&server, 2);
+    Sensor sensor3(&server, 3);
 
     Scheduler scheduler;
     scheduler.addSensor(&sensor);

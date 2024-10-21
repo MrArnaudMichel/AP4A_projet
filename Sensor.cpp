@@ -27,6 +27,6 @@ void Sensor::update() {
 }
 
 void Sensor::execute() {
-    setValue(rand() % 100);
-    server->notify(*this);
+    // setValue(std::rand() % 100);
+    // Server::notify(*this);
 }

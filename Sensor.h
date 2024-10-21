@@ -6,6 +6,7 @@
 #define SENSOR_H
 
 #include <ostream>
+#include <utility>
 
 #include "Server.h"
 class Server;
@@ -17,32 +18,21 @@ private:
     int id;
     Server *server;
     std::string valueType;
-    float value;
 
     int duration;
     int timeRemaining;
 public:
-    Sensor() : id(CONST_ID++), server(nullptr), value(0), duration(0), timeRemaining(0) {}
-    Sensor(const Sensor &sensor) : id(CONST_ID++), server(sensor.server), value(0), duration(sensor.duration), timeRemaining(sensor.timeRemaining) {}
+    Sensor() : id(CONST_ID++), server(nullptr), duration(0), timeRemaining(0) {}
+    Sensor(const Sensor &sensor) : id(CONST_ID++), server(sensor.server), duration(sensor.duration), timeRemaining(sensor.timeRemaining) {}
     ~Sensor() = default;
     Sensor &operator=(const Sensor &sensor);
 
-    Sensor(Server *server, const std::string &valueType, int duration) : id(CONST_ID++), server(server), valueType(valueType), value(0), duration(duration), timeRemaining(duration) {}
+    Sensor(Server *server, int duration) : id(CONST_ID++), server(server), duration(duration), timeRemaining(duration) {}
     void update();
-    void execute();
+    virtual void execute();
 
-protected:
-    float getValue() const {
-        return value;
-    }
-
-    void setValue(float value) {
-        this->value = value;
-    }
-
-public:
     friend std::ostream & operator<<(std::ostream &os, const Sensor &obj) {
-        return os << obj.id << ";" << obj.value;
+        return os << obj.id << ";";
     }
 };
 

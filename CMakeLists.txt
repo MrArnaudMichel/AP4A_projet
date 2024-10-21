@@ -8,10 +8,17 @@ include_directories(.)
 add_executable(AP4A_projet
         main.cpp
         main.h
-        Sensor.cpp
-        Sensor.h
+        Sensors/Sensor.cpp
+        Sensors/Sensor.h
         Server.cpp
         Server.h
         Scheduler.cpp
         Scheduler.h
+        Data.h
+        Sensors/SensorBool.cpp
+        Sensors/SensorBool.h
+        Sensors/SensorFloat.cpp
+        Sensors/SensorFloat.h
+        Sensors/SensorInteger.cpp
+        Sensors/SensorInteger.h
 )

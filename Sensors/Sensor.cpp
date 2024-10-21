@@ -26,7 +26,11 @@ void Sensor::update() {
     timeRemaining = duration;
 }
 
-void Sensor::execute() {
-    setValue(rand() % 100);
-    server->notify(*this);
+void Sensor::display(std::ostream &os) const {
+    os << id << ";" << type << ";";
+}
+
+std::ostream & operator<<(std::ostream &os, const Sensor &obj) {
+    obj.display(os);
+    return os;
 }

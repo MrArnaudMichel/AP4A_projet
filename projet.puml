@@ -73,12 +73,18 @@ package AP4A_project{
 
     class Data<template T>{
         - T value
+
+        # <<create>> Data()
+        # <<create>> Data(Data& data)
+        # <<destroy>> ~Data()
+        # Data& operator=(Data& data)
+
         # T getValue()
         # void setValue(T value)
     }
 
-    SensorBool ---|> Data: Data<bool>
-    SensorFloat ---|> Data: Data<float>
-    SensorInteger ---|> Data: Data<int>
+    SensorBool --|> Data: Data<bool>
+    SensorFloat --|> Data: Data<float>
+    SensorInteger --|> Data: Data<int>
 }
 @enduml

@@ -18,7 +18,6 @@ protected:
     void setValue(const T &value) {
         this->value = value;
     }
-public:
     //////////////////////////////
     /// Coplien architecture /////
     //////////////////////////////

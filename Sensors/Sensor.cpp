@@ -23,5 +23,10 @@ void Sensor::update() {
         return;
     }
     execute();
+    // Server::notify(*this);
     timeRemaining = duration;
+}
+
+void Sensor::display(std::ostream &os) const {
+    os << id << ";" << type << ";";
 }

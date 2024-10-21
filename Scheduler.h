@@ -6,7 +6,7 @@
 #define SCHEDULER_H
 
 #include <vector>
-#include "Sensor.h"
+#include "Sensors/Sensor.h"
 #include <csignal>
 #include <unistd.h>
 

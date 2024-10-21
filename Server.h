@@ -4,21 +4,21 @@
 
 #ifndef SERVER_H
 #define SERVER_H
-#include "Sensor.h"
+#include "Sensors/Sensor.h"
 #include <iostream>
 #include <ctime>
 
 class Sensor;
 class Server {
 public:
-    static void notify(const Sensor & sensor);
+    static void notify(const Sensor & sensor, const std::string & filepath);
 
     static std::string getDateFormatted();
 
     static void log(const Sensor & sensor, const std::string & message);
-    static void logOnFile(const Sensor & sensor, const std::string & message);
+    static void logOnFile(const Sensor & sensor, const std::string & filepath, const std::string & message);
 
-    static bool isFileEmpty();
+    static bool isFileEmpty(const std::string & filepath);
 };
 
 

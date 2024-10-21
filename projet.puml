@@ -1,43 +1,45 @@
 @startuml
+package AP4A_project{
+    class Server{
 
-class Server{
+    }
 
+    class Scheduler{
+
+    }
+
+    package Sensors{
+        class Sensor{
+
+        }
+
+        Sensor "1..1" o--> "1..1" Server: notify
+
+        class SensorBool{
+
+        }
+
+        class SensorFloat{
+
+        }
+
+        class SensorInteger{
+
+        }
+
+        Sensor <|-- SensorBool
+        Sensor <|-- SensorFloat
+        Sensor <|-- SensorInteger
+
+        Scheduler "1..1" o--> "0..*" Sensor
+    }
+
+    class Data<template T>{
+
+    }
+
+    SensorBool --|> Data: Data<bool>
+    SensorFloat --|> Data: Data<float>
+    SensorInteger --|> Data: Data<int>
 }
-
-class Scheduler{
-
-}
-
-Scheduler "1..1" o--> "0..*" Sensor
-
-class Sensor{
-
-}
-
-Sensor "1..1" o--> "1..1" Server
-
-class SensorLight{
-
-}
-
-class SensorTemperature{
-
-}
-
-class SensorSound{
-
-}
-
-Sensor <|-- SensorLight
-Sensor <|-- SensorTemperature
-Sensor <|-- SensorSound
-
-class Data<template T>{
-
-}
-
-SensorLight --|> Data: Data<bool>
-SensorTemperature --|> Data: Data<float>
-SensorSound --|> Data: Data<int>
-
 @enduml

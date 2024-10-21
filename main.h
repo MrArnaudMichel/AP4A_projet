@@ -6,7 +6,7 @@
 #define PROJET_MAIN_H
 
 #include <iostream>
-#include "Sensor.h"
+#include "Sensors/Sensor.h"
 #include "Scheduler.h"
 
 int main();

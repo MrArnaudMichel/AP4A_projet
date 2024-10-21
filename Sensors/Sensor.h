@@ -33,10 +33,11 @@ public:
     void update();
     virtual void execute() = 0;
 
-    virtual void affiche() const = 0;
+    virtual void display(std::ostream& os) const;
 
     friend std::ostream & operator<<(std::ostream &os, const Sensor &obj) {
-        return os << obj.id << ";"  << obj.type << ";";
+        obj.display(os);
+        return os;
     }
 };
 

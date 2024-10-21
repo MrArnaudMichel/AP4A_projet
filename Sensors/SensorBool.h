@@ -11,21 +11,21 @@
 #include "Sensor.h"
 
 
-class SensorLight: public Sensor, public Data<bool>
+class SensorBool: public Sensor, public Data<bool>
 {
 public:
-    SensorLight(Server *server, int duration, std::string type)
+    SensorBool(Server *server, int duration, std::string type)
         : Sensor(server, duration, std::move(type)), Data() {}
 
     void execute() override;
 
-    void affiche() const override {
-        std::cout << *this;
+    void display(std::ostream &os) const override {
+        Sensor::display(os);
+        os << *this;
     }
 
-    friend std::ostream & operator<<(std::ostream &os, const SensorLight &obj) {
+    friend std::ostream & operator<<(std::ostream &os, const SensorBool &obj) {
         return os
-               << static_cast<const Sensor &>(obj)
                << static_cast<const Data<bool> &>(obj);
     }
 };

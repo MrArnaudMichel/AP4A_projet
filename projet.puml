@@ -1,30 +1,43 @@
 @startuml
 package AP4A_project{
     class Server{
-
+        void notify()
+        string getDateFormatted()
+        void log()
+        void logInFile()
+        bool isFileEmpty()
     }
 
     class Scheduler{
-
+        {static} bool running
+        addSensor()
+        void simulation()
     }
 
     package Sensors{
         class Sensor{
+            {static} int CONST_ID
+            int id
+            string type
+            int duration
+            int time_remaining
 
+            void update()
+            {abstract} void execute()
         }
 
         Sensor "1..1" o--> "1..1" Server: notify
 
         class SensorBool{
-
+            void execute()
         }
 
         class SensorFloat{
-
+            void execute()
         }
 
         class SensorInteger{
-
+            void execute()
         }
 
         Sensor <|-- SensorBool
@@ -35,7 +48,9 @@ package AP4A_project{
     }
 
     class Data<template T>{
-
+        T value
+        T getValue()
+        void setValue()
     }
 
     SensorBool --|> Data: Data<bool>

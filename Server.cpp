@@ -7,7 +7,7 @@
 #include <fstream>
 
 void Server::notify(const Sensor &sensor, const std::string & filepath, const std::string &message) {
-    logOnFile(sensor, filepath, message);
+    logInFile(sensor, filepath, message);
     log(sensor, message);
 }
 
@@ -31,7 +31,7 @@ void Server::log(const Sensor &sensor, const std::string &message) {
 }
 
 
-void Server::logOnFile(const Sensor &sensor, const std::string & filepath, const std::string &message) {
+void Server::logInFile(const Sensor &sensor, const std::string & filepath, const std::string &message) {
     std::string filename = filepath + ".csv";
     std::ofstream file(filename, std::ios::app);
 

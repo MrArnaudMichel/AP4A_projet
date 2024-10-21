@@ -17,19 +17,19 @@ private:
     int id;
 
     int duration;
-    int timeRemaining;
+    int time_remaining;
 
 protected:
     Server *server;
     std::string type;
 public:
-    Sensor() : id(CONST_ID++), server(nullptr), duration(0), timeRemaining(0) {}
-    Sensor(const Sensor &sensor) : id(CONST_ID++), server(sensor.server), duration(sensor.duration), timeRemaining(sensor.timeRemaining) {}
+    Sensor() : id(CONST_ID++), server(nullptr), duration(0), time_remaining(0) {}
+    Sensor(const Sensor &sensor) : id(CONST_ID++), server(sensor.server), duration(sensor.duration), time_remaining(sensor.time_remaining) {}
 
     virtual ~Sensor() = default;
     Sensor &operator=(const Sensor &sensor);
 
-    Sensor(Server *server, const int duration, std::string type_) : id(CONST_ID++), duration(duration), timeRemaining(duration), server(server), type(std::move(type_)) {}
+    Sensor(Server *server, const int duration, std::string type_) : id(CONST_ID++), duration(duration), time_remaining(duration), server(server), type(std::move(type_)) {}
     void update();
     virtual void execute() = 0;
 

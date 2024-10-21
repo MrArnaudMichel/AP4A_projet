@@ -11,19 +11,19 @@ Sensor & Sensor::operator=(const Sensor &sensor) {
         return *this;
     }
     duration = sensor.duration;
-    timeRemaining = sensor.timeRemaining;
+    time_remaining = sensor.time_remaining;
     server = sensor.server;
 
     return *this;
 }
 
 void Sensor::update() {
-    if (timeRemaining > 0) {
-        timeRemaining--;
+    if (time_remaining > 0) {
+        time_remaining--;
         return;
     }
     execute();
-    timeRemaining = duration;
+    time_remaining = duration;
 }
 
 void Sensor::display(std::ostream &os) const {

@@ -5,8 +5,11 @@
 #include "SensorFloat.h"
 
 void SensorFloat::execute() {
-    setValue(((float)(rand() % 100) - 50) / 5);
-    Server::notify(*this, "environment", "Nouvelle valeur d'environement");
+    std::random_device rd;
+    std::mt19937 re(rd());
+    std::normal_distribution<float> distribution(15.0, 5.0);
+    setValue(distribution(re));
+    server->notify(*this, "environment", "Nouvelle valeur d'environement");
 }
 
 void SensorFloat::display(std::ostream &os) const {

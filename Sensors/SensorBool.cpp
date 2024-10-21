@@ -6,7 +6,7 @@
 
 void SensorBool::execute() {
     setValue(rand()%2);
-    Server::notify(*this, "light", "Récupération de la lumière");
+    server->notify(*this, "light", "Récupération de la lumière");
 }
 
 void SensorBool::display(std::ostream &os) const  {

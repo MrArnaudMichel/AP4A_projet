@@ -10,14 +10,14 @@
 class Sensor;
 class Server {
 public:
-    static void notify(const Sensor &sensor, const std::string &filepath, const std::string &message);
+    void notify(const Sensor &sensor, const std::string &filepath, const std::string &message);
 
-    static std::string getDateFormatted();
+    std::string getDateFormatted();
 
-    static void log(const Sensor & sensor, const std::string & message);
-    static void logOnFile(const Sensor & sensor, const std::string & filepath, const std::string & message);
+    void log(const Sensor & sensor, const std::string & message);
+    void logInFile(const Sensor & sensor, const std::string & filepath, const std::string & message);
 
-    static bool isFileEmpty(const std::string & filepath);
+    bool isFileEmpty(const std::string & filepath);
 };
 
 

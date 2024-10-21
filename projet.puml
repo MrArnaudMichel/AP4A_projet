@@ -1,0 +1,43 @@
+@startuml
+
+class Server{
+
+}
+
+class Scheduler{
+
+}
+
+Scheduler "1..1" o--> "0..*" Sensor
+
+class Sensor{
+
+}
+
+Sensor "1..1" o--> "1..1" Server
+
+class SensorLight{
+
+}
+
+class SensorTemperature{
+
+}
+
+class SensorSound{
+
+}
+
+Sensor <|-- SensorLight
+Sensor <|-- SensorTemperature
+Sensor <|-- SensorSound
+
+class Data<template T>{
+
+}
+
+SensorLight --|> Data: Data<bool>
+SensorTemperature --|> Data: Data<float>
+SensorSound --|> Data: Data<int>
+
+@enduml

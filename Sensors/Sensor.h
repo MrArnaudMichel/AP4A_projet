@@ -35,10 +35,7 @@ public:
 
     virtual void display(std::ostream& os) const;
 
-    friend std::ostream & operator<<(std::ostream &os, const Sensor &obj) {
-        obj.display(os);
-        return os;
-    }
+    friend std::ostream & operator<<(std::ostream &os, const Sensor &obj);
 };
 
 

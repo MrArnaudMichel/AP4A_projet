@@ -16,15 +16,9 @@ public:
 
     void execute() override;
 
-    void display(std::ostream &os) const override {
-        Sensor::display(os);
-        os << *this;
-    }
+    void display(std::ostream &os) const override;
 
-    friend std::ostream & operator<<(std::ostream &os, const SensorInteger &obj) {
-        return os
-               << static_cast<const Data<int> &>(obj);
-    }
+    friend std::ostream & operator<<(std::ostream &os, const SensorInteger &obj);
 };
 
 

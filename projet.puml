@@ -1,5 +1,12 @@
 @startuml
 
+skinparam class {
+    BackgroundColor White
+    ArrowColor Black
+    BorderColor Black
+    FontColor Black
+    FontSize 16
+}
 
 package AP4A_project{
     class Server{
@@ -16,12 +23,14 @@ package AP4A_project{
     }
 
     class Scheduler{
+        - vector<Sensor*> sensors
+        - {static} bool running
+
         + <<create>> Scheduler()
         + <<create>> Scheduler(Scheduler& scheduler)
         + <<destroy>> ~Scheduler()
         + Scheduler& operator=(Scheduler& scheduler)
 
-        - {static} bool running
         + addSensor(Sensor& sensor)
         + void simulation()
     }
@@ -30,9 +39,11 @@ package AP4A_project{
         abstract class Sensor{
             - {static} int CONST_ID
             - int id
-            - string type
             - int duration
             - int time_remaining
+            # string type
+            # Server* server
+
 
             + <<create>> Sensor()
             + <<create>> Sensor(int id, string type, int duration)

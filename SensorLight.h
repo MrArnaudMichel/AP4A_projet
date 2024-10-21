@@ -19,8 +19,14 @@ public:
 
     void execute() override;
 
-    std::ostream & toString() const override {
-        return std::cout << "SensorLight: " << static_cast<const Sensor &>(*this) << ' ' << static_cast<const Data<bool> &>(*this) << std::endl;
+    void affiche() const override {
+        std::cout << "SensorLight: " << *this;
+    }
+
+    friend std::ostream & operator<<(std::ostream &os, const SensorLight &obj) {
+        return os
+               << static_cast<const Sensor &>(obj)
+               << ' ' << static_cast<const Data<bool> &>(obj);
     }
 };
 

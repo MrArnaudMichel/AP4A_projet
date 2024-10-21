@@ -26,7 +26,7 @@ public:
     }
 
     friend std::ostream & operator<<(std::ostream &os, const Data &obj) {
-        return os << "value: " << obj.value;
+        return os << obj.value;
     }
 };
 

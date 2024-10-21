@@ -29,14 +29,14 @@ public:
     virtual ~Sensor() = default;
     Sensor &operator=(const Sensor &sensor);
 
-    Sensor(Server *server, int duration) : id(CONST_ID++), server(server), duration(duration), timeRemaining(duration) {}
+    Sensor(Server *server, const int duration, std::string type_) : id(CONST_ID++), duration(duration), timeRemaining(duration), server(server), type(std::move(type_)) {}
     void update();
     virtual void execute() = 0;
 
     virtual void affiche() const = 0;
 
     friend std::ostream & operator<<(std::ostream &os, const Sensor &obj) {
-        return os << obj.id << ";";
+        return os << obj.id << ";"  << obj.type << ";";
     }
 };
 

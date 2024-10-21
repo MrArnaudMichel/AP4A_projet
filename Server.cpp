@@ -26,10 +26,10 @@ std::string Server::getDateFormatted()  {
 }
 
 void Server::log(const Sensor &sensor, const std::string &message) {
-    std::cout << "Hello World" << std::endl;
+    std::cout << "\033[1;35mDate: " << getDateFormatted() << " - "
+    << "\033[1;33mSensor(id;type;value): ";
     sensor.affiche();
-    std::cout << "\033[1;35mDate: " << getDateFormatted() << " - " << "\033[1;33mSensor(id;value): " << sensor << " - " << "\033[1;36mMessage: " <<
-        message << std::endl;
+    std::cout << " \033[1;36mMessage: " << message << std::endl;
 }
 
 void Server::logOnFile(const Sensor &sensor, const std::string &message) {

@@ -8,7 +8,7 @@
 
 int main() {
     Server server;
-    SensorLight sensor_light(&server, 2);
+    SensorLight sensor_light(&server, 2, "light");
 
     Scheduler scheduler;
     scheduler.addSensor(&sensor_light);

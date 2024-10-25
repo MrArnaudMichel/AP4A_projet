@@ -1,0 +1,73 @@
+#include "stm32f4xx.h"
+#include <stdio.h>
+
+void wait(int freq){
+	for (int i = 0; i < 1600000 / freq; ++i);
+}
+
+
+int main(){
+
+	// Declaration of GPIO_Typedef instance mapped on GPIOA
+
+	// Starting clock for GPIOA and GPIOC
+	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN | RCC_AHB1ENR_GPIOCEN;
+
+	// Configuration of GPIOA
+	GPIO_TypeDef * PA = GPIOA;
+
+	// PIN 5 configuration
+	PA->MODER &= ~(3 << 2 * 5); // OPT
+	PA->MODER |= (1 << 2 * 5);
+
+	PA->OTYPER &= ~(1 << 5);
+
+	PA->OSPEEDR &= ~(3 << 2 * 5);
+
+	PA->PUPDR &= ~(3 << 2 * 5);
+
+	// PIN 0 - Button
+	PA->MODER &= ~(3 << 2 * 0);
+	PA->PUPDR &= ~(3 << 2 * 0);
+	PA->PUPDR |= 1;
+
+
+	// PIN 1 - LED
+	PA->MODER &= ~(3 << 2 * 1);
+	PA->MODER |= (1 << 2);
+
+	PA->OTYPER &= ~(1 << 2);
+	PA->OTYPER |= 2;
+
+	PA->OSPEEDR &= ~(3 << 2 * 1);
+	PA->PUPDR &= ~(3 << 2 * 1);
+
+	PA->ODR |= 2; // set lamp to 0
+
+
+	// GPIOC configuration
+	GPIO_TypeDef * PC = GPIOC;
+
+	PC->MODER &= ~(3 << 2 * 13);
+	PC->PUPDR &= ~(1 << 2 * 13);
+	PC->PUPDR |= (1 << 2 * 13);
+
+
+
+
+	int freq = 1; // Set the frequency of the first light at 1Hz
+	while (1){
+		freq = (PC->IDR) & (1 << 13) ? 1 : 2;
+		PA->ODR |= (1 << 5);
+		for (int i = 0; i < 1600000 / freq; ++i){
+			PA->ODR = (PA->IDR)&1 ? PA->ODR | 2 : PA->ODR & ~2;
+		}
+
+		freq = (PC->IDR) & (1 << 13) ? 1 : 2;
+		PA->ODR &= ~(1 << 5);
+
+		for (int i = 0; i < 1600000 / freq; ++i){
+			PA->ODR = (PA->IDR)&1 ? PA->ODR | 2 : PA->ODR & ~2;
+		}
+	}
+}

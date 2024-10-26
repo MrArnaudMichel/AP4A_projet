@@ -58,6 +58,14 @@ void Scheduler::addSensor(Sensor *sensor) {
 }
 
 /**
+ * Add a server to the scheduler
+ * @param server server to add
+ */
+void Scheduler::addServer(Server *server) {
+    servers.push_back(server);
+}
+
+/**
  * Signal handler for Ctrl+C and kill
  * Stop the scheduler
  * @param signum signal number
@@ -79,6 +87,9 @@ void Scheduler::simulation() {
         sleep(1);
         for (auto &sensor : sensors) {
             sensor->update();
+        }
+        for (auto &server : servers) {
+            server->update();
         }
     }
 }

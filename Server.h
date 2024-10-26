@@ -9,6 +9,8 @@
 
 class Sensor;
 class Server {
+private:
+    int uptime = 0;
 public:
     //////////////////////////////
     /// Coplien architecture /////
@@ -18,6 +20,8 @@ public:
     virtual ~Server() = default;
     Server &operator=(const Server &server) = default;
 
+    void update();
+
     void notify(const Sensor &sensor, const std::string &filepath, const std::string &message);
 
     static std::string getDateFormatted();
@@ -26,6 +30,8 @@ public:
     void logInFile(const Sensor & sensor, const std::string & filepath, const std::string & message);
 
     bool isFileEmpty(const std::string & filepath);
+
+    void resume();
 };
 
 

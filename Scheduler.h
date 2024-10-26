@@ -13,6 +13,7 @@
 class Scheduler {
 private:
     std::vector<Sensor *> sensors;
+    std::vector<Server *> servers;
 public:
     static bool running;
 
@@ -25,6 +26,7 @@ public:
     Scheduler &operator=(const Scheduler &scheduler);
 
     void addSensor(Sensor *sensor);
+    void addServer(Server *server);
 
     void simulation();
 };

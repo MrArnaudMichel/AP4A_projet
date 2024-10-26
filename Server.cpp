@@ -6,6 +6,11 @@
 
 #include <fstream>
 
+void Server::update() {
+    ++uptime;
+    std::cout << "\033[1;32mUptime: " << uptime << "s" << std::endl;
+}
+
 /**
  * Notify the server of a message from a sensor
  * @param sensor the sensor that sent the message
@@ -77,6 +82,10 @@ void Server::logInFile(const Sensor &sensor, const std::string & filepath, const
 bool Server::isFileEmpty(const std::string & filepath) {
     std::ifstream file(filepath);
     return file.peek() == std::ifstream::traits_type::eof();
+}
+
+void Server::resume() {
+    std::cout << "\033[1;32mServer uptime: " << uptime << "s" << std::endl;
 }
 
 

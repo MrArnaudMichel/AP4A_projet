@@ -1,5 +1,9 @@
 @startuml
 
+skinparam title {
+    FontSize 24
+}
+
 skinparam class {
     BackgroundColor White
     ArrowColor Black
@@ -7,6 +11,8 @@ skinparam class {
     FontColor Black
     FontSize 16
 }
+
+title Architecture du projet
 
 package AP4A_project{
     class Server{
@@ -98,4 +104,8 @@ package AP4A_project{
     SensorFloat --|> Data: Data<float>
     SensorInteger --|> Data: Data<int>
 }
+
+
+caption Arnaud MICHEL
+
 @enduml

@@ -1,5 +1,10 @@
 @startuml
-'https://plantuml.com/sequence-diagram
+
+skinparam title {
+    FontSize 24
+}
+
+title Fonctionnement de l'envoi de données
 
 autonumber
 
@@ -56,5 +61,9 @@ deactivate SensorSpe
 
 legend left
     SensorSpe: Child of Sensor (SensorFloat, SensorBool, SensorInteger)
+    Jaunes: Appel de fonction
 endlegend
+
+
+caption Arnaud MICHEL
 @enduml

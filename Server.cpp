@@ -8,7 +8,7 @@
 
 void Server::update() {
     ++uptime;
-    std::cout << "\033[1;32mUptime: " << uptime << "s" << std::endl;
+    std::cout << WHITE << "Uptime: " << uptime << "s" << RESET << std::endl;
 }
 
 /**
@@ -46,8 +46,8 @@ std::string Server::getDateFormatted()  {
  * @param message the message to log
  */
 void Server::log(const Sensor &sensor, const std::string &message) {
-    std::cout << "\033[1;35mDate: " << getDateFormatted() << " - "
-    << "\033[1;33mSensor(id;type;value): "  << sensor << " - " << " \033[1;36mMessage: " << message << std::endl;
+    std::cout << YELLOW << "Date: " << getDateFormatted() << " - "
+    << BOLDCYAN << "Sensor(id;type;value): "  << sensor << " - " << RESET << GREEN << "Message: " << message << RESET << std::endl;
 }
 
 

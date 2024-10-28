@@ -16,6 +16,7 @@ note over Server, Sensor
 end note
 
 activate Sensor
+activate Sensor
 Sensor -> SensorSpe: La fonction display() va donc être appelée sur le type SensorSpe qui est le type réel de l'objet
 note over Sensor, SensorSpe
 *this->display(os);
@@ -50,12 +51,20 @@ end note
 
 deactivate Data
 
-SensorSpe -> Server: Renvoie les données complètes à l'ostream
-note over SensorSpe, Server
-os << endl;
+SensorSpe -> Sensor: Renvoie toutes les données dans l'ostream
+note over Sensor, SensorSpe
+return os;
 end note
 
 deactivate SensorSpe
+
+Sensor -> Server: Renvoie l'ensemble des données dans l'ostream
+note over Sensor, Server
+return os;
+end note
+
+deactivate Sensor
+
 
 
 

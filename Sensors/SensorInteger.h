@@ -6,6 +6,7 @@
 #define SENSORINTEGER_H
 #include "Data.h"
 #include "Sensor.h"
+#include <random>
 
 
 class SensorInteger: public Sensor, public Data<int>

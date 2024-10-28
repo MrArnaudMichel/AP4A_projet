@@ -3,14 +3,14 @@
 //
 
 #include "SensorInteger.h"
-
-#include <set>
-
 /**
  * Execute the sensor (override) and notify the server
  */
 void SensorInteger::execute() {
-    setValue(rand()%100);
+    std::random_device rd;
+    std::mt19937 re(rd());
+    std::uniform_int_distribution<int> distribution(0, 100);
+    setValue(distribution(re));
     server->notify(*this, "sound", "Mise a jour du son");
 }
 

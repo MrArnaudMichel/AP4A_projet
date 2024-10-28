@@ -4,7 +4,7 @@
 
 #include "Sensor.h"
 // Static variable initialization
-int Sensor::CONST_ID = 0;
+int Sensor::STATIC_ID = 0;
 
 /**
  * Copy constructor for Sensor

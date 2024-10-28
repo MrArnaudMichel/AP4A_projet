@@ -1,0 +1,60 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+activate Server
+
+Server -> Sensor: La fonction appelée par le serveur est celle du parent car le serveur ne connait que le type Sensor
+note over Server, Sensor
+<< Sensor
+end note
+
+activate Sensor
+Sensor -> SensorSpe: La fonction display() va donc être appelée sur le type SensorSpe qui est le type réel de l'objet
+note over Sensor, SensorSpe
+*this->display(os);
+end note
+
+deactivate Sensor
+activate SensorSpe
+SensorSpe -> Sensor: La fonction display() va être appelée sur le parent pour avoir accès aux attributs de Sensor
+note over Sensor, SensorSpe
+ Sensor::display(os);
+end note
+
+activate Sensor
+
+Sensor -> SensorSpe: renvoie les données dans l'ostream
+note over Sensor, SensorSpe
+os << id << ";" << type << ";";
+end note
+
+deactivate Sensor
+
+SensorSpe -> Data: Demande la valeur de la donnée
+note over SensorSpe, Data
+os << static_cast<const Data<T>&>(*this);
+end note
+
+activate Data
+Data -> SensorSpe: Renvoie la valeur de la donnée
+note over Data, SensorSpe
+os << value;
+end note
+
+deactivate Data
+
+SensorSpe -> Server: Renvoie les données complètes à l'ostream
+note over SensorSpe, Server
+os << endl;
+end note
+
+deactivate SensorSpe
+
+
+
+legend left
+    SensorSpe: Child of Sensor (SensorFloat, SensorBool, SensorInteger)
+endlegend
+@enduml

@@ -1,0 +1,53 @@
+@startuml
+
+skinparam title {
+    FontSize 24
+}
+
+skinparam arrow {
+    FontSize 10
+}
+title Fonctionnement de l'envoi de données
+
+autonumber
+
+activate Server
+
+Server -> Sensor: << Sensor
+
+activate Sensor
+Sensor -> SensorSpe: *this->display(os);
+
+activate SensorSpe
+SensorSpe -> Sensor: Sensor::display(os);
+
+activate Sensor
+
+Sensor -> SensorSpe: os << id << ";" << type << ";";
+
+deactivate Sensor
+
+SensorSpe -> Data: os << static_cast<const Data<T>&>(*this);
+
+activate Data
+Data -> SensorSpe: os << value;
+
+deactivate Data
+
+SensorSpe -> Sensor: return os;
+
+deactivate SensorSpe
+
+Sensor -> Server: return os;
+
+deactivate Sensor
+
+Server -> Server: file << os;
+
+legend left
+    SensorSpe: Classe spécialisée de Sensor
+endlegend
+
+
+caption Arnaud MICHEL
+@enduml

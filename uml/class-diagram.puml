@@ -1,0 +1,110 @@
+@startuml
+
+skinparam title {
+    FontSize 24
+}
+
+skinparam class {
+    BackgroundColor White
+    ArrowColor Black
+    BorderColor Black
+    FontColor Black
+    FontSize 16
+}
+
+title Architecture du projet
+
+package AP4A_project{
+    class Server{
+        + <<create>> Server()
+        + <<create>> Server(Server& server)
+        + <<destroy>> ~Server()
+        + Server& operator=(Server& server)
+
+        + void notify(Sensor& sensor, string& filepath, string& message)
+        + {static} string getDateFormatted()
+        + void log(string& message)
+        + void logInFile(string& filepath, string& message)
+        + bool isFileEmpty(string& filepath)
+    }
+
+    class Scheduler{
+        - vector<Sensor*> sensors
+        - {static} bool running
+
+        + <<create>> Scheduler()
+        + <<create>> Scheduler(Scheduler& scheduler)
+        + <<destroy>> ~Scheduler()
+        + Scheduler& operator=(Scheduler& scheduler)
+
+        + addSensor(Sensor& sensor)
+        + void simulation()
+    }
+
+    package Sensors{
+        abstract class Sensor{
+            - {static} int CONST_ID
+            - int id
+            - int duration
+            - int time_remaining
+            # string type
+            # Server* server
+
+
+            + <<create>> Sensor()
+            + <<create>> Sensor(int id, string type, int duration)
+            + <<create>> Sensor(Sensor& sensor)
+            + <<destroy>> ~Sensor()
+            + Sensor& operator=(Sensor& sensor)
+
+            + void update()
+            + {abstract} void display(ostream& os)
+            + {abstract} void execute()
+
+            + <<friend>> ostream& operator<<(ostream& os, Sensor& sensor)
+        }
+
+        Server "1..1" <-- "1..1" Sensor: notify
+
+        class SensorBool{
+            + <<override>> void execute()
+            + <<friend>> ostream& operator<<(ostream& os, SensorBool& sensor)
+        }
+
+        class SensorFloat{
+            + <<override>> void execute()
+            + <<friend>> ostream& operator<<(ostream& os, SensorFloat& sensor)
+        }
+
+        class SensorInteger{
+            + <<override>> void execute()
+            + <<friend>> ostream& operator<<(ostream& os, SensorInteger& sensor)
+        }
+
+        Sensor <|-- SensorBool
+        Sensor <|-- SensorFloat
+        Sensor <|-- SensorInteger
+
+        Scheduler "1..1" o--> "0..*" Sensor
+    }
+
+    class Data<template T>{
+        - T value
+
+        # <<create>> Data()
+        # <<create>> Data(Data& data)
+        # <<destroy>> ~Data()
+        # Data& operator=(Data& data)
+
+        # T getValue()
+        # void setValue(T value)
+    }
+
+    SensorBool --|> Data: Data<bool>
+    SensorFloat --|> Data: Data<float>
+    SensorInteger --|> Data: Data<int>
+}
+
+caption Arnaud MICHEL
+
+@enduml

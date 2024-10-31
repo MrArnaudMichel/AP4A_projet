@@ -6,6 +6,7 @@
 #define SENSORINTEGER_H
 #include "Data.h"
 #include "Sensor.h"
+#include <random>
 
 
 class SensorInteger: public Sensor, public Data<int>
@@ -15,9 +16,9 @@ public:
         : Sensor(server, duration, std::move(type)), Data() {}
 
     void execute() override;
-
     void display(std::ostream &os) const override;
 
+    // Operator overloading
     friend std::ostream & operator<<(std::ostream &os, const SensorInteger &obj);
 };
 

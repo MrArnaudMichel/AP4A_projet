@@ -11,7 +11,7 @@
 int main() {
     Server server;
     SensorBool sensor_light(&server, 2, "light");
-    SensorFloat sensor_temperature(&server, 1, "temperature");
+    SensorFloat sensor_temperature(&server, 5, "temperature", 12.0, 3.0);
     SensorFloat sensor_humidity(&server, 3, "humidity");
     SensorInteger sensor_sound(&server, 4, "sound");
 
@@ -20,6 +20,8 @@ int main() {
     scheduler.addSensor(&sensor_temperature);
     scheduler.addSensor(&sensor_humidity);
     scheduler.addSensor(&sensor_sound);
+
+    scheduler.addServer(&server);
 
     scheduler.simulation();
 }

@@ -105,7 +105,6 @@ package AP4A_project{
     SensorInteger --|> Data: Data<int>
 }
 
-
 caption Arnaud MICHEL
 
 @enduml

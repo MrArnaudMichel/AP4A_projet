@@ -12,6 +12,14 @@ skinparam class {
     FontSize 16
 }
 
+skinparam legend {
+    BackgroundColor White
+    ArrowColor Black
+    BorderColor Black
+    FontColor Black
+    FontSize 16
+}
+
 title Architecture du projet
 
 package AP4A_project{
@@ -105,6 +113,14 @@ package AP4A_project{
     SensorInteger --|> Data: Data<int>
 }
 
+legend left
+    | Color | Signification|
+    |<#000000>| Projet demandé|
+    |<#0000FF>| Ajout personnel|
+endlegend
+
 caption Arnaud MICHEL
 
 @enduml
+
+taztat ---[#blue]---> Arnaud

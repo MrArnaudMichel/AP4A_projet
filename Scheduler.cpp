@@ -24,9 +24,7 @@ Scheduler::Scheduler(const Scheduler &scheduler) {
  * Delete all sensors (if there is a copy of this scheduler, the sensors will also be deleted)
  */
 Scheduler::~Scheduler() {
-    for (auto &sensor : sensors) {
-        delete sensor;
-    }
+
 }
 
 /**
@@ -71,9 +69,8 @@ void Scheduler::addServer(Server *server) {
  * @param signum signal number
  */
 void signalHandler(const int signum) {
-    std::cout << "\nInterrupt signal (" << signum << ") received.\n";
+    std::cout << BOLDBLUE << "\nInterrupt signal (" << signum << ") received.\n" << RESET;
     Scheduler::running = false;
-    exit(signum);
 }
 
 /**
@@ -92,4 +89,5 @@ void Scheduler::simulation() {
             server->update();
         }
     }
+    std::cout << BOLDRED << "Scheduler stopped" << RESET << std::endl;
 }

@@ -2,4 +2,3 @@
 
 ## to add:
 - unit on csv
-- define colors

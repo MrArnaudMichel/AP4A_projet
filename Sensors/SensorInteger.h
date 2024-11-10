@@ -12,8 +12,8 @@
 class SensorInteger: public Sensor, public Data<int>
 {
 public:
-    SensorInteger(Server *server, int duration, std::string type)
-        : Sensor(server, duration, std::move(type)), Data() {}
+    SensorInteger(Server *server, int duration, std::string type, std::string unit)
+        : Sensor(server, duration, std::move(type), std::move(unit)), Data() {}
 
     void execute() override;
     void display(std::ostream &os) const override;

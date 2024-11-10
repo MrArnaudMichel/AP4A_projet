@@ -23,9 +23,7 @@ Scheduler::Scheduler(const Scheduler &scheduler) {
  * Destructor for Scheduler
  * Delete all sensors (if there is a copy of this scheduler, the sensors will also be deleted)
  */
-Scheduler::~Scheduler() {
-
-}
+Scheduler::~Scheduler() = default;
 
 /**
  * Copy operator for Scheduler
@@ -35,6 +33,7 @@ Scheduler::~Scheduler() {
  */
 Scheduler & Scheduler::operator=(const Scheduler &scheduler) {
     if (this == &scheduler) {
+        std::cerr << BOLDRED << "You cannot copy a scheduler on itself" << RESET << std::endl;
         return *this;
     }
     for (auto &sensor : sensors) {
@@ -78,8 +77,8 @@ void signalHandler(const int signum) {
  * Update all sensors every second
  */
 void Scheduler::simulation() {
-    signal(SIGINT, signalHandler); // Ctrl+C
-    signal(SIGTERM, signalHandler); // kill
+    signal(SIGINT, signalHandler); // Ctrl+C - 2
+    signal(SIGTERM, signalHandler); // kill - 15
     while (running) {
         sleep(1);
         for (auto &sensor : sensors) {
@@ -89,5 +88,5 @@ void Scheduler::simulation() {
             server->update();
         }
     }
-    std::cout << BOLDRED << "Scheduler stopped" << RESET << std::endl;
+    std::cout << BOLDRED << "Program stopped" << RESET << std::endl;
 }

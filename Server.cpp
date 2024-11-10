@@ -47,7 +47,7 @@ std::string Server::getDateFormatted()  {
  */
 void Server::log(const Sensor &sensor, const std::string &message) {
     std::cout << YELLOW << "Date: " << getDateFormatted() << " - "
-    << BOLDCYAN << "Sensor(id;type;value): "  << sensor << " - " << RESET << GREEN << "Message: " << message << RESET << std::endl;
+    << BOLDCYAN << "Sensor(id;type;value in " << sensor.getUnit() << "): "  << sensor << " - " << RESET << GREEN << "Message: " << message << RESET << std::endl;
 }
 
 
@@ -63,7 +63,7 @@ void Server::logInFile(const Sensor &sensor, const std::string & filepath, const
 
     if (file.is_open()) {
         if (isFileEmpty(filename)) {
-            file << "Date;Hour;SensorId;SensorType;SensorValue;Message" << std::endl;
+            file << "Date;Hour;SensorId;Data (" << sensor.getUnit() << ");Message" << std::endl;
             std::cout << BOLDGREEN << filename + " created at " << __FILE__ << RESET << std::endl;
         }
         file << getDateFormatted() << ";";

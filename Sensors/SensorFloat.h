@@ -16,10 +16,10 @@ private:
     float example_std_dev = 5.0;
 public:
     // Constructors
-    SensorFloat(Server *server, int duration, std::string type)
-        : Sensor(server, duration, std::move(type)), Data() {}
-    SensorFloat(Server *server, int duration, const std::string &type_, float example_mean, float example_std_dev)
-        : Sensor(server, duration, type_), Data(),
+    SensorFloat(Server *server, int duration, std::string type, std::string unit)
+        : Sensor(server, duration, std::move(type), std::move(unit)), Data() {}
+    SensorFloat(Server *server, int duration, const std::string &type_, std::string unit, float example_mean, float example_std_dev)
+        : Sensor(server, duration, type_, std::move(unit)), Data(),
           example_mean(example_mean),
           example_std_dev(example_std_dev) {
     }

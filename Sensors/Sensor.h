@@ -21,6 +21,8 @@ private:
 protected:
     Server *server;
     std::string type;
+
+    std::string unit;
 public:
     //////////////////////////////
     /// Coplien architecture /////
@@ -30,11 +32,15 @@ public:
     virtual ~Sensor() = default;
     Sensor &operator=(const Sensor &sensor);
 
-    Sensor(Server *server, const int duration, std::string type_) : id(STATIC_ID++), duration(duration), time_remaining(duration), server(server), type(std::move(type_)) {}
+    Sensor(Server *server, const int duration, std::string type_, std::string unit) : id(STATIC_ID++), duration(duration), time_remaining(duration), server(server), type(std::move(type_)), unit(std::move(unit)) {}
 
     void update();
     virtual void execute() = 0;
     virtual void display(std::ostream& os) const;
+
+    std::string getUnit() const {
+        return unit;
+    }
 
     // Operator overloading
     friend std::ostream & operator<<(std::ostream &os, const Sensor &obj);

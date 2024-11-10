@@ -12,16 +12,16 @@
 class SensorFloat: public Sensor, public Data<float>
 {
 private:
-    float exemple_mean = 15.0;
-    float exemple_std_dev = 5.0;
+    float example_mean = 15.0;
+    float example_std_dev = 5.0;
 public:
     // Constructors
     SensorFloat(Server *server, int duration, std::string type)
         : Sensor(server, duration, std::move(type)), Data() {}
-    SensorFloat(Server *server, int duration, const std::string &type_, float exemple_mean, float exemple_std_dev)
+    SensorFloat(Server *server, int duration, const std::string &type_, float example_mean, float example_std_dev)
         : Sensor(server, duration, type_), Data(),
-          exemple_mean(exemple_mean),
-          exemple_std_dev(exemple_std_dev) {
+          example_mean(example_mean),
+          example_std_dev(example_std_dev) {
     }
 
     void execute() override;

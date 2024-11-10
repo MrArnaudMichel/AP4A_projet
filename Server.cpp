@@ -64,7 +64,7 @@ void Server::logInFile(const Sensor &sensor, const std::string & filepath, const
     if (file.is_open()) {
         if (isFileEmpty(filename)) {
             file << "Date;Hour;SensorId;SensorType;SensorValue;Message" << std::endl;
-            std::cout << "\033[1;32m" << filename + " created at " << __FILE__ << "\033[0m" << std::endl;
+            std::cout << BOLDGREEN << filename + " created at " << __FILE__ << RESET << std::endl;
         }
         file << getDateFormatted() << ";";
         file << sensor << ";" << message << std::endl;
@@ -83,9 +83,4 @@ bool Server::isFileEmpty(const std::string & filepath) {
     std::ifstream file(filepath);
     return file.peek() == std::ifstream::traits_type::eof();
 }
-
-void Server::resume() {
-    std::cout << "\033[1;32mServer uptime: " << uptime << "s" << std::endl;
-}
-
 

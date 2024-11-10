@@ -49,8 +49,6 @@ public:
     void logInFile(const Sensor & sensor, const std::string & filepath, const std::string & message);
 
     bool isFileEmpty(const std::string & filepath);
-
-    void resume();
 };
 
 

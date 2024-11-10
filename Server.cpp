@@ -8,7 +8,7 @@
 
 void Server::update() {
     ++uptime;
-    if (uptime % 5 == 0) std::cout << BOLDBLUE << "[INFO]" << RESET << " Server uptime: " << uptime << std::endl;
+    if (uptime % 5 == 0) std::cout << BOLDBLUE << "[INFO]" << RESET << " Server uptime: " << uptime << "s" << std::endl;
 }
 
 /**
@@ -17,9 +17,14 @@ void Server::update() {
  * @param filepath the file where the message will be logged
  * @param message the message to log
  */
-void Server::notify(const Sensor &sensor, const std::string & filepath, const std::string &message) {
-    logInFile(sensor, filepath, message);
+void Server::notify(const Sensor &sensor, const std::string &message) {
+    logInFile(sensor, message);
     log(sensor, message);
+    ++nb_values;
+}
+
+void Server::end() {
+    std :: cout << BOLDBLUE << "[INFO]" << RESET << " Server uptime: " << uptime << "s - " << nb_values << " values received" << std::endl;
 }
 
 /**
@@ -57,14 +62,15 @@ void Server::log(const Sensor &sensor, const std::string &message) {
  * @param filepath the path of the file where the message will be logged
  * @param message the message to log
  */
-void Server::logInFile(const Sensor &sensor, const std::string & filepath, const std::string &message) {
-    std::string filename = filepath + ".csv";
+void Server::logInFile(const Sensor &sensor, const std::string &message) {
+    std::string filename = sensor.getType() + ".csv";
     std::ofstream file(filename, std::ios::app);
 
     if (file.is_open()) {
         if (isFileEmpty(filename)) {
             file << "Date;Hour;SensorId;Data (" << sensor.getUnit() << ");Message" << std::endl;
-            std::cout << BOLDGREEN << filename + " created at " << __FILE__ << RESET << std::endl;
+            std::cout << BOLDBLUE << "[INFO]" << RESET << " " << filename + " created at " << __FILE__ << std::endl;
+
         }
         file << getDateFormatted() << ";";
         file << sensor << ";" << message << std::endl;

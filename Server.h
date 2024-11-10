@@ -30,6 +30,7 @@ class Sensor;
 class Server {
 private:
     int uptime = 0;
+    int nb_values = 0;
 public:
     //////////////////////////////
     /// Coplien architecture /////
@@ -41,12 +42,14 @@ public:
 
     void update();
 
-    void notify(const Sensor &sensor, const std::string &filepath, const std::string &message);
+    void notify(const Sensor &sensor, const std::string &message);
+
+    void end();
 
     static std::string getDateFormatted();
 
     void log(const Sensor & sensor, const std::string & message);
-    void logInFile(const Sensor & sensor, const std::string & filepath, const std::string & message);
+    void logInFile(const Sensor & sensor, const std::string & message);
 
     bool isFileEmpty(const std::string & filepath);
 };

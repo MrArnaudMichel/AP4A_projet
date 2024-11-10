@@ -89,5 +89,8 @@ void Scheduler::simulation() {
             server->update();
         }
     }
+    for (auto &server : servers) {
+        server->end();
+    }
     std::cout << BOLDBLUE << "[INFO]" << RESET << " Program stopped" << std::endl;
 }

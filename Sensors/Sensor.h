@@ -42,6 +42,10 @@ public:
         return unit;
     }
 
+    std::string getType() const {
+        return type;
+    }
+
     // Operator overloading
     friend std::ostream & operator<<(std::ostream &os, const Sensor &obj);
 };

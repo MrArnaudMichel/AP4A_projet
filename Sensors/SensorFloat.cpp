@@ -12,7 +12,7 @@ void SensorFloat::execute() {
     std::mt19937 re(rd());
     std::normal_distribution<float> distribution(15.0, 5.0);
     setValue(distribution(re));
-    server->notify(*this, "environment", "Nouvelle valeur d'environement");
+    server->notify(*this, "Nouvelle valeur d'environement");
 }
 
 /**

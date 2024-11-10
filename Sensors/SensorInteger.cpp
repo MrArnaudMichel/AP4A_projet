@@ -11,7 +11,7 @@ void SensorInteger::execute() {
     std::mt19937 re(rd());
     std::uniform_int_distribution<int> distribution(0, 100);
     setValue(distribution(re));
-    server->notify(*this, "sound", "Mise a jour du son");
+    server->notify(*this, "Mise a jour du son");
 }
 
 /**

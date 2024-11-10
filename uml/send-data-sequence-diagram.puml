@@ -7,7 +7,9 @@ skinparam title {
 skinparam arrow {
     FontSize 10
 }
+
 title Fonctionnement de l'envoi de données
+
 
 autonumber
 

@@ -8,7 +8,7 @@
 
 void Server::update() {
     ++uptime;
-    std::cout << WHITE << "Uptime: " << uptime << "s" << RESET << std::endl;
+    if (uptime % 5 == 0) std::cout << BOLDBLUE << "[INFO]" << RESET << " Server uptime: " << uptime << std::endl;
 }
 
 /**

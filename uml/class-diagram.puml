@@ -1,5 +1,7 @@
 @startuml
 
+scale 0.39725
+
 skinparam title {
     FontSize 24
 }
@@ -9,16 +11,9 @@ skinparam class {
     ArrowColor Black
     BorderColor Black
     FontColor Black
-    FontSize 16
 }
 
-skinparam legend {
-    BackgroundColor White
-    ArrowColor Black
-    BorderColor Black
-    FontColor Black
-    FontSize 16
-}
+
 
 title Architecture du projet
 
@@ -49,12 +44,15 @@ package AP4A_project{
         + void simulation()
     }
 
+    Scheduler "1..1" o--> "0..*" Server
+
     package Sensors{
         abstract class Sensor{
             - {static} int CONST_ID
             - int id
             - int duration
             - int time_remaining
+            - string unit
             # string type
             # Server* server
 
@@ -69,6 +67,8 @@ package AP4A_project{
             + {abstract} void display(ostream& os)
             + {abstract} void execute()
 
+            + string getUnit()
+
             + <<friend>> ostream& operator<<(ostream& os, Sensor& sensor)
         }
 
@@ -76,16 +76,19 @@ package AP4A_project{
 
         class SensorBool{
             + <<override>> void execute()
+            + <<override>> void display(ostream& os)
             + <<friend>> ostream& operator<<(ostream& os, SensorBool& sensor)
         }
 
         class SensorFloat{
             + <<override>> void execute()
+            + <<override>> void display(ostream& os)
             + <<friend>> ostream& operator<<(ostream& os, SensorFloat& sensor)
         }
 
         class SensorInteger{
             + <<override>> void execute()
+            + <<override>> void display(ostream& os)
             + <<friend>> ostream& operator<<(ostream& os, SensorInteger& sensor)
         }
 
@@ -106,6 +109,8 @@ package AP4A_project{
 
         # T getValue()
         # void setValue(T value)
+
+        # <<friend>> ostream& operator<<(ostream& os, Data& data)
     }
 
     SensorBool --|> Data: Data<bool>
@@ -113,14 +118,7 @@ package AP4A_project{
     SensorInteger --|> Data: Data<int>
 }
 
-legend left
-    | Color | Signification|
-    |<#000000>| Projet demandé|
-    |<#0000FF>| Ajout personnel|
-endlegend
 
 caption Arnaud MICHEL
 
 @enduml
-
-taztat ---[#blue]---> Arnaud

@@ -68,7 +68,7 @@ void Scheduler::addServer(Server *server) {
  * @param signum signal number
  */
 void signalHandler(const int signum) {
-    std::cout << BOLDBLUE << "\nInterrupt signal (" << signum << ") received.\n" << RESET;
+    std::cout << BOLDBLUE << "[INFO]" << BOLDRED << " Signal " << signum << " received" << RESET << std::endl;
     Scheduler::running = false;
 }
 
@@ -79,6 +79,7 @@ void signalHandler(const int signum) {
 void Scheduler::simulation() {
     signal(SIGINT, signalHandler); // Ctrl+C - 2
     signal(SIGTERM, signalHandler); // kill - 15
+    std :: cout << BOLDBLUE << "[INFO]" << RESET << " Program started" << std::endl;
     while (running) {
         sleep(1);
         for (auto &sensor : sensors) {
@@ -88,5 +89,5 @@ void Scheduler::simulation() {
             server->update();
         }
     }
-    std::cout << BOLDRED << "Program stopped" << RESET << std::endl;
+    std::cout << BOLDBLUE << "[INFO]" << RESET << " Program stopped" << std::endl;
 }
